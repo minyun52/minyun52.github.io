@@ -1,0 +1,676 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>vi 에디터 사용법 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="swap.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="pull_request.html">
+            
+                <a href="pull_request.html">
+            
+                    
+                    Pull Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="markdown.html">
+            
+                <a href="markdown.html">
+            
+                    
+                    마크다운이란?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="swap.html">
+            
+                <a href="swap.html">
+            
+                    
+                    swap 설치를 통해 ec2 메모리 할당하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="vi.html">
+            
+                <a href="vi.html">
+            
+                    
+                    vi 에디터 사용법
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >vi 에디터 사용법</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="vi-&#xC5D0;&#xB514;&#xD130;-&#xC0AC;&#xC6A9;&#xBC95;">vi &#xC5D0;&#xB514;&#xD130; &#xC0AC;&#xC6A9;&#xBC95;</h1>
+<h1 id="vi-&#xC2DC;&#xC791;-&#xBA85;&#xB839;&#xC5B4;">vi &#xC2DC;&#xC791; &#xBA85;&#xB839;&#xC5B4;</h1>
+<ul>
+<li>&#xD30C;&#xC77C; &#xC5F4;&#xAE30;</li>
+</ul>
+<pre><code class="lang-markdown">vi {&#xD30C;&#xC77C;&#xBA85;}
+&#xC608;&#xC2DC;)
+vi malgn.txt
+</code></pre>
+<ul>
+<li>&#xCEE4;&#xC11C; &#xC774;&#xB3D9;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xD0A4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h(&#x2190;)</td>
+<td>&#xC67C;&#xCABD;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>j(&#x2193;)</td>
+<td>&#xC544;&#xB798;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>k(&#x2191;)</td>
+<td>&#xC704;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>l(&#x2192;)</td>
+<td>&#xC624;&#xB978;&#xCABD;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>e</td>
+<td>&#xC624;&#xB978;&#xCABD; &#xD55C; &#xB2E8;&#xC5B4;&#xC758; &#xB05D;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>w</td>
+<td>&#xC624;&#xB978;&#xCABD; &#xD55C; &#xB2E8;&#xC5B4;&#xC758; &#xC55E;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>b</td>
+<td>&#xC67C;&#xCABD; &#xD55C; &#xB2E8;&#xC5B4;&#xC758; &#xC55E;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>&#xD55C; &#xD589; &#xC544;&#xB798;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Back Space</td>
+<td>&#xD55C; &#xBB38;&#xC790; &#xC67C;&#xCABD;&#xC73C;&#xB85C; &#xCEE4;&#xC11C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Space Bar</td>
+<td>&#xD55C; &#xBB38;&#xC790; &#xC624;&#xB978;&#xCABD;&#xC73C;&#xB85C; &#xCEE4;&#xC11C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>^</td>
+<td>&#xD589; &#xB9E8; &#xC67C;&#xCABD;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>$</td>
+<td>&#xD589; &#xB9E8; &#xC624;&#xB978;&#xCABD;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>H</td>
+<td>&#xD654;&#xBA74; &#xB9E8; &#xC704;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>M</td>
+<td>&#xD654;&#xBA74; &#xC911;&#xAC04;&#xC73C;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>L</td>
+<td>&#xD654;&#xBA74; &#xB9E8; &#xC544;&#xB798;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>&#xC22B;&#xC790;G</td>
+<td>&#xC22B;&#xC790;&#xB9CC;&#xD07C; &#xC904; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Ctrl + i</td>
+<td>&#xD55C; &#xD654;&#xBA74; &#xC704;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Ctrl + b</td>
+<td>&#xD55C; &#xD654;&#xBA74; &#xC544;&#xB798;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Ctrl + d</td>
+<td>&#xBC18; &#xD654;&#xBA74; &#xC704;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Ctrl + u</td>
+<td>&#xBC18; &#xD654;&#xBA74; &#xC544;&#xB798;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Ctrl + e</td>
+<td>&#xD55C; &#xC904;&#xC529; &#xC704;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+<tr>
+<td>Ctrl + y</td>
+<td>&#xD55C; &#xC904;&#xC529; &#xC544;&#xB798;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xBB38;&#xC790;, &#xD589;, &#xC0BD;&#xC785; &#xBA85;&#xB839;&#xC5B4;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xD0A4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>&#xCEE4;&#xC11C; &#xC624;&#xB978;&#xCABD;&#xC5D0; &#xBB38;&#xC790; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>A</td>
+<td>&#xCEE4;&#xC11C; &#xC624;&#xB978;&#xCABD;, &#xD589;&#xC758; &#xB05D;&#xC5D0; &#xBB38;&#xC790; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>i</td>
+<td>&#xCEE4;&#xC11C; &#xC67C;&#xCABD;&#xC5D0; &#xBB38;&#xC790; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>I</td>
+<td>&#xCEE4;&#xC11C; &#xC67C;&#xCABD;, &#xD589;&#xC758; &#xCC98;&#xC74C;&#xC5D0; &#xBB38;&#xC790; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>o</td>
+<td>&#xCEE4;&#xC11C; &#xC544;&#xB798;&#xC5D0; &#xD589; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>O</td>
+<td>&#xCEE4;&#xC11C; &#xC704;&#xC5D0; &#xD589; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>ESC</td>
+<td>&#xC885;&#xB8CC;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xD14D;&#xC2A4;&#xD2B8; &#xBCC0;&#xACBD; &#xBA85;&#xB839;&#xC5B4;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xBA85;&#xB839;&#xC5B4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cw</td>
+<td>&#xB2E8;&#xC5B4; &#xBCC0;&#xACBD;</td>
+</tr>
+<tr>
+<td>cc</td>
+<td>&#xD589; &#xBCC0;&#xACBD;</td>
+</tr>
+<tr>
+<td>C</td>
+<td>&#xCEE4;&#xC11C; &#xC624;&#xB978;&#xC871;&#xC758; &#xD589; &#xBCC0;&#xACBD;</td>
+</tr>
+<tr>
+<td>s</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC704;&#xCE58;&#xD55C; &#xBB38;&#xC790;&#xC5F4; &#xB300;&#xCCB4;</td>
+</tr>
+<tr>
+<td>S</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC704;&#xCC28;&#xD55C; &#xB77C;&#xC778;&#xC758; &#xBB38;&#xC790;&#xC5F4; &#xB300;&#xCCB4;</td>
+</tr>
+<tr>
+<td>r</td>
+<td>&#xCEE4;&#xC11C; &#xC704;&#xCE58; &#xBB38;&#xC790;&#xB97C; &#xB2E4;&#xB978; &#xBB38;&#xC790;&#xB85C; &#xB300;&#xCCB4;</td>
+</tr>
+<tr>
+<td>r-Enter</td>
+<td>&#xD589; &#xBD84;&#xB9AC;</td>
+</tr>
+<tr>
+<td>J</td>
+<td>&#xD604; &#xD589;&#xACFC; &#xC544;&#xB798; &#xD589; &#xACB0;&#xD569;</td>
+</tr>
+<tr>
+<td>xp</td>
+<td>&#xCEE4;&#xC11C; &#xC704;&#xCE58; &#xBB38;&#xC790;&#xC640; &#xC624;&#xB978;&#xCABD; &#xBB38;&#xC790; &#xAD50;&#xD658;</td>
+</tr>
+<tr>
+<td>~</td>
+<td>&#xB300;&#xC18C;&#xBB38;&#xC790; &#xBCC0;&#xACBD;</td>
+</tr>
+<tr>
+<td>u</td>
+<td>&#xC774;&#xC804; &#xBA85;&#xB839; &#xCDE8;&#xC18C;</td>
+</tr>
+<tr>
+<td>U</td>
+<td>&#xD589; &#xBCC0;&#xACBD; &#xC0AC;&#xD56D; &#xCDE8;&#xC18C;, &#xC774;&#xC804;&#xC758; &#xCD5C;&#xC885; &#xD589; &#xCDE8;&#xC18C;</td>
+</tr>
+<tr>
+<td>.</td>
+<td>&#xC774;&#xC804; &#xCD5C;&#xC885; &#xBA85;&#xB839; &#xBC18;&#xBCF5;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xD14D;&#xC2A4;&#xD2B8; &#xC0AD;&#xC81C; &#xBA85;&#xB839;&#xC5B4;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xBA85;&#xB839;&#xC5B4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC788;&#xB294; &#xBB38;&#xC790; &#xC0AD;&#xC81C;</td>
+</tr>
+<tr>
+<td>nx</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC788;&#xB294; &#xC704;&#xCE58;&#xBD80;&#xD130; n&#xAC1C;&#xC758; &#xBB38;&#xC790;&#xB97C; &#xC0AD;&#xC81C;</td>
+</tr>
+<tr>
+<td>dw</td>
+<td>&#xD604;&#xC7AC; &#xCEE4;&#xC11C;&#xC5D0; &#xC788;&#xB294; &#xD55C; &#xB2E8;&#xC5B4; &#xC0AD;&#xC81C;</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC788;&#xB294; &#xB77C;&#xC778; &#xC0AD;&#xC81C;</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC788;&#xB294; &#xB77C;&#xC778;&#xBD80;&#xD130; n&#xAC1C;&#xC758; &#xB77C;&#xC778; &#xC0AD;&#xC81C;</td>
+</tr>
+<tr>
+<td>db</td>
+<td>&#xCEE4;&#xC11C;&#xC758; &#xC704;&#xCE58;&#xC5D0;&#xC11C; &#xAC70;&#xAFB8;&#xB85C; &#xD55C; &#xB2E8;&#xC5B4; &#xC0AD;&#xC81C;</td>
+</tr>
+<tr>
+<td>D</td>
+<td>&#xCEE4;&#xC11C; &#xC624;&#xB978;&#xCABD; &#xD589; &#xC0AD;&#xC81C;</td>
+</tr>
+<tr>
+<td>:&#xC2DC;&#xC791;&#xC22B;&#xC790;,&#xB05D;&#xC22B;&#xC790;d</td>
+<td>&#xC2DC;&#xC791;~&#xB05D; &#xD589; &#xC0AD;&#xC81C;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xBCF5;&#xC0AC;/&#xC774;&#xB3D9; &#xBA85;&#xB839;&#xC5B4;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xBA85;&#xB839;&#xC5B4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yy</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC788;&#xB294; &#xC904; &#xBCF5;&#xC0AC;</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>&#xD589; yank &#xB610;&#xB294; &#xBCF5;&#xC0AC;</td>
+</tr>
+<tr>
+<td>yh</td>
+<td>&#xCEE4;&#xC11C;&#xC758; &#xC67C;&#xCABD; &#xBB38;&#xC790; &#xBCF5;&#xC0AC;</td>
+</tr>
+<tr>
+<td>yl</td>
+<td>&#xCEE4;&#xC11C;&#xC5D0; &#xC704;&#xCE58;&#xD55C; &#xBB38;&#xC790; &#xBCF5;&#xC0AC;</td>
+</tr>
+<tr>
+<td>yi</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC704;&#xCE58;&#xD55C; &#xC904;&#xACFC; &#xADF8; &#xC544;&#xB7AB;&#xC904; &#xBCF5;&#xC0AC;</td>
+</tr>
+<tr>
+<td>yk</td>
+<td>&#xCEE4;&#xC11C;&#xAC00; &#xC704;&#xCE58;&#xD55C; &#xC904;&#xACFC; &#xADF8; &#xC717;&#xC904; &#xBCF5;&#xC0AC;</td>
+</tr>
+<tr>
+<td>p</td>
+<td>yank &#xB418;&#xAC70;&#xB098; &#xC0AD;&#xC81C;&#xB41C; &#xD589;&#xC744; &#xD604;&#xC7AC; &#xD589; &#xC704;&#xB85C; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>P</td>
+<td>yank &#xB418;&#xAC70;&#xB098; &#xC0AD;&#xC81C;&#xB41C; &#xD589;&#xC744; &#xD604;&#xC7AC; &#xD589; &#xC544;&#xB798;&#xC5D0; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>:1,2 co 3</td>
+<td>1~2&#xD589;&#xC744; 3&#xD589; &#xB2E4;&#xC74C;&#xC73C;&#xB85C; &#xBCF5;&#xC0AC;</td>
+</tr>
+<tr>
+<td>:4,5 m 6</td>
+<td>4~5&#xD589;&#xC744; 6&#xD589; &#xC704;&#xB85C; &#xC774;&#xB3D9;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xD0D0;&#xC0C9; &#xBC0F; &#xB300;&#xCCB4; &#xBA85;&#xB839;&#xC5B4;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xBA85;&#xB839;&#xC5B4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/{&#xAC80;&#xC0C9;&#xD560; &#xBB38;&#xC790;&#xC5F4;}</td>
+<td>&#xC624;&#xB978;&#xCABD; &#xC544;&#xB798; &#xBC29;&#xD5A5;&#xC73C;&#xB85C; &#xBB38;&#xC790;&#xC5F4; &#xAC80;&#xC0C9;</td>
+</tr>
+<tr>
+<td>?{&#xAC80;&#xC0C9;&#xD560; &#xBB38;&#xC790;&#xC5F4;}</td>
+<td>&#xC67C;&#xCABD; &#xC704; &#xBC29;&#xD5A5;&#xC73C;&#xB85C; &#xBB38;&#xC790;&#xC5F4; &#xAC80;&#xC0C9;</td>
+</tr>
+<tr>
+<td>n</td>
+<td>&#xBB38;&#xC790;&#xC5F4;&#xC758; &#xB2E4;&#xC74C;&#xC73C;&#xB85C; &#xAC8C;&#xC18D; &#xAC80;&#xC0C9;</td>
+</tr>
+<tr>
+<td>N</td>
+<td>&#xBB38;&#xC790;&#xC5F4;&#xC758; &#xC774;&#xC804;&#xC73C;&#xB85C; &#xACC4;&#xC18D; &#xAC80;&#xC0C9;</td>
+</tr>
+<tr>
+<td>:%s/[&#xC6D0;&#xBCF8;&#xB2E8;&#xC5B4;]/[&#xBC14;&#xAFC0;&#xB2E8;&#xC5B4;]</td>
+<td>&#xBB38;&#xC790; &#xCE58;&#xD658;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xD30C;&#xC77C; &#xBA85;&#xB839;&#xC5B4;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xBA85;&#xB839;&#xC5B4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:r {&#xD30C;&#xC77C;&#xBA85;}</td>
+<td>&#xCEE4;&#xC11C; &#xB2E4;&#xC74C;&#xC5D0; &#xD30C;&#xC77C; &#xC0BD;&#xC785;</td>
+</tr>
+<tr>
+<td>:{&#xD589;&#xBC88;&#xD638;} r {&#xD30C;&#xC77C;&#xBA85;}</td>
+<td>&#xD589;&#xBC88;&#xD638; &#xB2E4;&#xC74C;&#xC5D0; &#xD30C;&#xC77C; &#xC0BD;&#xC785;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#xC800;&#xC7A5; &#xBC0F; &#xC885;&#xB8CC; &#xBA85;&#xB839;&#xC5B4;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#xBA85;&#xB839;&#xC5B4;</th>
+<th>&#xC124;&#xBA85;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:w</td>
+<td>&#xBCC0;&#xACBD;&#xC0AC;&#xD56D; &#xC800;&#xC7A5;</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>&#xBCC0;&#xACBD;&#xC0AC;&#xD56D; &#xC800;&#xC7A5; &#xD6C4; vi &#xC885;&#xB8CC;</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>&#xBCC0;&#xACBD;&#xC0AC;&#xD56D; &#xC800;&#xC7A5; &#xC54A;&#xACE0; &#xC885;&#xB8CC;</td>
+</tr>
+<tr>
+<td>q</td>
+<td>&#xC218;&#xC815;&#xD55C; &#xD30C;&#xC77C;&#xC744; &#xC800;&#xC7A5;&#xD558;&#xC9C0; &#xC54A;&#xACE0; vi &#xC885;&#xB8CC;</td>
+</tr>
+<tr>
+<td>e!</td>
+<td>&#xC218;&#xC815;&#xD55C; &#xAC83;&#xC744; &#xBB34;&#xC2DC;&#xD558;&#xACE0; &#xB2E4;&#xC2DC; &#xD3B8;&#xC9D1; &#xC0C1;&#xD0DC;&#xB85C;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="swap.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: swap 설치를 통해 ec2 메모리 할당하기">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"vi 에디터 사용법","level":"1.5","depth":1,"previous":{"title":"swap 설치를 통해 ec2 메모리 할당하기","level":"1.4","depth":1,"path":"swap.md","ref":"swap.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"vi.md","mtime":"2022-08-06T08:59:41.155Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-06T09:02:05.027Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
