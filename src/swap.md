@@ -9,7 +9,7 @@ Tags: In progress
 
 먼저 ec2 인스턴스에 접속했다.
 
-![swap1](/img/swap1.png)
+![swap1](/src/img/swap1.png)
 
 1. 우선 dd 명령을 사용해서 루트 파일 시스템에 스왑 파일을 만든다.
 
@@ -62,7 +62,7 @@ sudo vim /etc/fstab
 /swapfile swap swap defaults 0 0
 ```
 
-![swap2](/img/swap2.png)
+![swap2](/src/img/swap2.png)
 
 1. 메모리 할당 설정이 종료되었다. 설정된 메모리를 확인한다.
 
