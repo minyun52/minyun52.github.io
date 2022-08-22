@@ -1,0 +1,588 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>httpd.conf 알아보기 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Virtual_Hosting.html" />
+    
+    
+    <link rel="prev" href="required_pakages.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">깃 배우기</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="pull_request.html">
+            
+                <a href="pull_request.html">
+            
+                    
+                    Pull Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="markdown.html">
+            
+                <a href="markdown.html">
+            
+                    
+                    마크다운이란?
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">서버 배우기</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="swap.html">
+            
+                <a href="swap.html">
+            
+                    
+                    swap 설치를 통해 ec2 메모리 할당하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="vi.html">
+            
+                <a href="vi.html">
+            
+                    
+                    vi 에디터 사용법
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="CentOS_yum.html">
+            
+                <a href="CentOS_yum.html">
+            
+                    
+                    CentOS yum 사용법
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="required_pakages.html">
+            
+                <a href="required_pakages.html">
+            
+                    
+                    필수설치프로그램
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.5" data-path="httpd_conf.html">
+            
+                <a href="httpd_conf.html">
+            
+                    
+                    httpd.conf 알아보기
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="Virtual_Hosting.html">
+            
+                <a href="Virtual_Hosting.html">
+            
+                    
+                    Virtual Hosting 설정하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >httpd.conf 알아보기</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="httpdconf">httpd.conf</h1>
+<ul>
+<li><p>ServerRoot &#x201C;/etc/httpd&#x201D;</p>
+<ul>
+<li>&#xB514;&#xB809;&#xD130;&#xB9AC; &#xD2B8;&#xB9AC;&#xC758; &#xCD5C;&#xC0C1;&#xC704;&#xB97C; &#xB9D0;&#xD55C;&#xB2E4;.</li>
+<li>&#xC5EC;&#xAE30;&#xC5D0; &#xC11C;&#xBC84;&#xC758; &#xC124;&#xC815;, &#xC5D0;&#xB7EC;, &#xB85C;&#xADF8; &#xD30C;&#xC77C;&#xB4E4;&#xC774; &#xC800;&#xC7A5;&#xB41C;&#xB2E4;.</li>
+<li>&#xACBD;&#xB85C; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0; &#x201C;/&#x201D;&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xBA74; &#xC548;&#xB41C;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>Listen 80</p>
+<ul>
+<li>&#xD2B9;&#xC815; IP&#xC8FC;&#xC18C;&#xC640; &#xD3EC;&#xD2B8;&#xB97C; &#xBB36;&#xC5B4;&#xC8FC;&#xB294; &#xC5ED;&#xD560;&#xC744; &#xD55C;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>Dynamic Shared Object (DSO) Support</p>
+<ul>
+<li>Apache&#xC640; &#xD638;&#xD658;&#xB418;&#xB294; &#xBAA8;&#xB4C8;&#xC744; &#xB85C;&#xB4DC;&#xD558;&#xB294; &#xC9C0;&#xC2DC;&#xC790;&#xC774;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>Include conf.modules.d/*/.conf</p>
+<ul>
+<li>Apache&#xB294; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xBD84;&#xC0B0;&#xC2DC;&#xCF1C; &#xC800;&#xC7A5;&#xD558;&#xC5EC; &#xD544;&#xC694;&#xD55C; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xB9CC; &#xB85C;&#xB4DC;&#xD560; &#xC218; &#xC788;&#xB2E4;.</li>
+<li>&#xC774;&#xB54C; Include&#xB97C; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>User apache</p>
+<p>  Group apache</p>
+<ul>
+<li>httpd&#xAC00; &#xC2E4;&#xD589;&#xB420;&#xB54C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xC774;&#xB984;</li>
+</ul>
+</li>
+<li><p>&#x2018;Main&#x2019; server configuration</p>
+<ul>
+<li>&#xBA54;&#xC778; &#xC11C;&#xBC84;&#xC5D0;</li>
+<li>virtual host&#xB97C; &#xC0DD;&#xC0C1;&#xD560; &#xB54C; &#xC774; &#xBA54;&#xC778; &#xC11C;&#xBC84; &#xC124;&#xC815;&#xB4E4;&#xC774; &#xAC01; virtual host&#xC758; &#xAE30;&#xBCF8;&#xAC12;&#xC73C;&#xB85C; &#xC0C1;&#xC18D;&#xB41C;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>ServerAdmin root@localhost</p>
+<ul>
+<li>&#xC11C;&#xBC84; &#xB0B4;&#xBD80; &#xC624;&#xB958;&#xAC00; &#xBC1C;&#xC0DD;&#xD558;&#xBA74; &#xB744;&#xC6B0;&#xB294; &#xC548;&#xB0B4;&#xBB38;&#xC5D0; &#xCD9C;&#xB825;&#xB420; &#xC11C;&#xBC84; &#xAD00;&#xB9AC;&#xC790; &#xC5F0;&#xB77D;&#xCC98;</li>
+<li>&#xC8FC;&#xB85C; &#xC774;&#xBA54;&#xC77C; &#xC8FC;&#xC18C;&#xB97C; &#xC801;&#xB294;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>ServerName www.example.com:80</p>
+<ul>
+<li>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xC8FC;&#xC11D; &#xCC98;&#xB9AC;&#xB418;&#xC5B4;&#xC788;&#xB2E4;.</li>
+<li>&#xC8FC;&#xC11D;&#xC744; &#xD574;&#xC81C;&#xD558;&#xACE0; &#xC9C0;&#xC815;&#xD558;&#xB294; &#xAC83;&#xC744; &#xAD8C;&#xC7A5;&#xD55C;&#xB2E4;.</li>
+<li>&#xC11C;&#xBC84;&#xB97C; &#xC2DD;&#xBCC4;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xD638;&#xC2A4;&#xD2B8; &#xC774;&#xB984;&#xC744; &#xC9C0;&#xC815;&#xD558;&#xB294; &#xC124;&#xC815;.</li>
+<li>IP&#xC8FC;&#xC18C;&#xB97C; &#xB300;&#xC2E0; &#xC801;&#xC744; &#xC218; &#xC788;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p><directory {디렉터리="" 명}=""></directory></p>
+<ul>
+<li>&#xAC01; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC5D0; &#xACE0;&#xC720;&#xD55C; &#xC124;&#xC815;&#xC744; &#xC801;&#xC6A9;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xBE14;&#xB85D;&#xC774;&#xB2E4;.</li>
+<li>&#xB514;&#xB809;&#xD130;&#xB9AC; &#xBA85;&#xC740; &#xC11C;&#xBC84; &#xC790;&#xCCB4;&#xC758; &#xC2E4;&#xC81C; &#xB514;&#xB809;&#xD130;&#xB9AC; &#xC808;&#xB300; &#xACBD;&#xB85C;&#xB97C; &#xC801;&#xB294;&#xB2E4;.</li>
+<li>&#xBCC4;&#xB3C4; &#xC124;&#xC815;&#xC774; &#xC5C6;&#xC73C;&#xBA74; &#xC790;&#xC2DD; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB4E4;&#xB3C4; &#xC18D;&#xC131;&#xC744; &#xC0C1;&#xC18D;&#xBC1B;&#xB294;&#xB2E4;.</li>
+<li>AllowOverride none, Required all denied<ul>
+<li>&#xBAA8;&#xB4E0; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC758; &#xC811;&#xADFC;&#xC744; &#xAE08;&#xC9C0;</li>
+<li>Apache&#xB294; &#xBAA8;&#xB4E0; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC758; &#xC811;&#xADFC;&#xC744; &#xAE08;&#xC9C0;&#xC2DC;&#xD0A4;&#xACE0; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC81C;&#xACF5;&#xD560; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB9CC; &#xC0C8;&#xB85C; &#xC124;&#xC815;&#xD558;&#xC5EC; &#xC811;&#xADFC;&#xC744; &#xD5C8;&#xC6A9;&#xC2DC;&#xD0A8;&#xB2E4;.</li>
+<li>AllowOverride<ul>
+<li>&#xD574;&#xB2F9; &#xB514;&#xB809;&#xD130;&#xB9AC; &#xC124;&#xC815; &#xB0B4;&#xC6A9;&#xC744; &#xBCC4;&#xB3C4;&#xC758; &#xC678;&#xBD80;&#xD30C;&#xC77C;&#xC5D0;&#xC11C; &#xC7AC;&#xC124;&#xC815; &#xB610;&#xB294; &#xB36E;&#xC5B4;&#xC4F8; &#xC218; &#xC788;&#xB294;&#xC9C0; &#xACB0;&#xC815;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DocumentRoot &#x201C;/var/www/html&#x201D;</p>
+<ul>
+<li>&#xC6F9; &#xD398;&#xC774;&#xC9C0;&#xC758; &#xB8E8;&#xD2B8;&#xB97C; &#xC9C0;&#xC815;&#xD55C;&#xB2E4;.</li>
+<li>&#xBAA8;&#xB4E0; &#xC694;&#xCCAD;&#xC740; &#xC5EC;&#xAE30;&#xC5D0; &#xC9C0;&#xC815;&#xD55C; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xB85C; &#xAC04;&#xB2E4;.</li>
+<li>&#xC2EC;&#xBCFC;&#xB9AD; &#xB9C1;&#xD06C;&#xB098; aliases&#xB97C; &#xD1B5;&#xD574; &#xB2E4;&#xB978; &#xC704;&#xCE58;&#xB85C; &#xBCF4;&#xB0BC; &#xC218; &#xC788;&#xB2E4;.</li>
+</ul>
+</li>
+<li><directory “="" var="" www”="">
+
+  AllowOverride None
+
+  Require all granted
+
+  </directory>
+
+<ul>
+<li>var &#xBC11; www&#xB77C;&#xB294; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC758; &#xC124;&#xC815;</li>
+<li>&#xC124;&#xC815; &#xB36E;&#xC5B4;&#xC4F0;&#xAE30; &#xBD88;&#xAC00;</li>
+<li>&#xBAA8;&#xB4E0; &#xC811;&#xADFC; &#xD5C8;&#xC6A9;</li>
+</ul>
+</li>
+<li><directory “="" var="" www="" html”="">
+
+  Options Indexes FollowSymLinks
+
+  AllowOverride None
+
+  Require all granted
+
+  </directory>
+
+<ul>
+<li>Options&#xC5D0;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC740; &#xC778;&#xC790;&#xAC00; &#xC62C; &#xC218; &#xC788;&#xB2E4;.</li>
+<li>Indexes : &#xB514;&#xB809;&#xD130;&#xB9AC; &#xACBD;&#xB85C;&#xAC00; &#xC694;&#xCCAD;&#xB418;&#xACE0; DirectoryIndex&#xC5D0; &#xB9DE;&#xB294; &#xD30C;&#xC77C;&#xC774; &#xC5C6;&#xC73C;&#xBA74; &#xD574;&#xB2F9; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC758; &#xBAA9;&#xB85D;&#xC744; &#xCD9C;&#xB825;&#xD55C;&#xB2E4;.</li>
+<li>FollowSymLinks : &#xD574;&#xB2F9; &#xB514;&#xB809;&#xD130;&#xB9AC; &#xB0B4;&#xC5D0;&#xC11C; &#xC2EC;&#xBCFC;&#xB9AD; &#xB9C1;&#xD06C;&#xB97C; &#xAC00;&#xB2A5;&#xD558;&#xAC8C; &#xD55C;&#xB2E4;.</li>
+<li>Includes : SSI(Server Side Include)&#xB97C; &#xD5C8;&#xC6A9;&#xD55C;&#xB2E4;.</li>
+<li>ExecCGI : CGI &#xAC00;&#xB2A5;</li>
+<li>All : MultiViews &#xC635;&#xC158;&#xC744; &#xC81C;&#xC678;&#xD55C; &#xBAA8;&#xB4E0; &#xC635;&#xC158;&#xC744; &#xC801;&#xC6A9;&#xD55C;&#xB2E4;.</li>
+<li>None : &#xC5B4;&#xB5A0;&#xD55C; &#xC635;&#xC158;&#xB3C4; &#xC801;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;.</li>
+<li><a href="https://httpd.apache.org/docs/2.4/mod/core.html#servername" target="_blank">&#xB354; &#xB9CE;&#xC740; Options</a></li>
+</ul>
+</li>
+<li><p>DirectoryIndex</p>
+<ul>
+<li>&#xC694;&#xCCAD;&#xC5D0;&#xC11C; &#xD30C;&#xC77C;&#xBA85;&#xC774; &#xC0DD;&#xB7B5;&#xB418;&#xC5C8;&#xC744; &#xB54C;, &#xC6F9; &#xC11C;&#xBC84;&#xAC00; &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xCC3E;&#xAC8C; &#xB418;&#xB294; &#xD30C;&#xC77C;&#xC744; &#xC815;&#xC758;&#xD55C;&#xB2E4;.</li>
+<li>&#xC5EC;&#xB7EC; &#xD30C;&#xC77C;&#xBA85;&#xC774; &#xB4E4;&#xC5B4;&#xAC08; &#xC218; &#xC788;&#xB2E4;.</li>
+</ul>
+</li>
+<li><files “.ht*”="">
+
+  Require all denied
+
+  </files>
+
+<ul>
+<li>Files&#xC5D0;&#xC11C;&#xB294; &#xD30C;&#xC77C;&#xC5D0; &#xB300;&#xD55C; &#xC811;&#xADFC; &#xC124;&#xC815;&#xC744; &#xC815;&#xC758;&#xD55C;&#xB2E4;.</li>
+<li>.ht&#xB85C; &#xC2DC;&#xC791;&#xD558;&#xB294; &#xBAA8;&#xB4E0; &#xD30C;&#xC77C;&#xC5D0; &#xC811;&#xADFC;&#xC744; &#xC81C;&#xD55C;&#xD588;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>ErrorLog &#x201C;logs/error_log&#x201D;</p>
+<ul>
+<li>&#xC5D0;&#xB7EC; &#xB85C;&#xADF8; &#xD30C;&#xC77C;&#xC758; &#xC704;&#xCE58;&#xB97C; &#xC9C0;&#xC815;&#xD55C;&#xB2E4;.</li>
+<li>virtual host&#xB4E4;&#xC5D0; &#xB530;&#xB85C; &#xC5D0;&#xB7EC; &#xB85C;&#xADF8; &#xC704;&#xCE58;&#xB97C; &#xC9C0;&#xC815;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xC5EC;&#xAE30;&#xC5D0; &#xC800;&#xC7A5;&#xC774; &#xB41C;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>LogLevel warn</p>
+<ul>
+<li>error log&#xC5D0; &#xB0A8;&#xACA8;&#xC9C0;&#xB294; &#xB85C;&#xADF8;&#xC758; &#xC22B;&#xC790;&#xB97C; &#xC9C0;&#xC815;&#xD558;&#xB294; &#xC124;&#xC815;&#xC774;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>log_config_module</p>
+</li>
+</ul>
+<pre><code class="lang-bash">&lt;IfModule <span class="hljs-built_in">log</span>_config_module&gt;
+    LogFormat <span class="hljs-string">&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</span> combined
+    LogFormat <span class="hljs-string">&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot;</span> common
+
+    &lt;IfModule logio_module&gt;
+
+      LogFormat <span class="hljs-string">&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot; %I %O&quot;</span> combinedio
+    &lt;/IfModule&gt;
+
+    CustomLog <span class="hljs-string">&quot;logs/access_log&quot;</span> combined
+&lt;/IfModule&gt;
+</code></pre>
+<p>log_config_module&#xC774; &#xC788;&#xC73C;&#xBA74; &#xC2E4;&#xD589;&#xB41C;&#xB2E4;.</p>
+<p>LogFormat &#xB9E8; &#xB4A4;&#xC5D0; &#xC791;&#xC131;&#xB418;&#xC5B4; &#xC788;&#xB294; &#xBB38;&#xC7A5;&#xC774; &#xD3EC;&#xB9F7;&#xC758; &#xC774;&#xB984;&#xC774; &#xB41C;&#xB2E4;.</p>
+<table>
+<thead>
+<tr>
+<th>&#xD3EC;&#xB9F7;</th>
+<th>&#xC758;&#xBBF8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%h</td>
+<td>&#xC6D0;&#xACA9;&#xD638;&#xC2A4;&#xD2B8; &#xBA85;</td>
+</tr>
+<tr>
+<td>%l</td>
+<td>&#xC6D0;&#xACA9; &#xB85C;&#xADF8;&#xC778; &#xBA85;</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>&#xC6D0;&#xACA9; &#xC0AC;&#xC6A9;&#xC790;</td>
+</tr>
+<tr>
+<td>%t</td>
+<td>&#xC694;&#xCCAD; &#xC2DC;&#xAC04;</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>&#xC694;&#xCCAD; &#xBA54;&#xC2DC;&#xC9C0;&#xC758; &#xCCAB;&#xBC88;&#xC9F8; &#xB77C;&#xC778;</td>
+</tr>
+<tr>
+<td>%&gt;s</td>
+<td>&#xCD5C;&#xC885; &#xC0C1;&#xD0DC;</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>&#xC751;&#xB2F5; &#xBC14;&#xC774;&#xD2B8; &#xC218;</td>
+</tr>
+<tr>
+<td>%{Refer}i</td>
+<td>&#xB808;&#xD37C;&#xB7EC; &#xC815;&#xBCF4;</td>
+</tr>
+<tr>
+<td>%{User-Agent}i</td>
+<td>&#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xBE0C;&#xB77C;&#xC6B0;&#xC800; &#xC815;&#xBCF4;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>mim_module</li>
+</ul>
+<pre><code class="lang-bash">&lt;IfModule mime_module&gt;
+    TypesConfig /etc/mime.types
+
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+
+    AddType text/html .shtml
+    AddOutputFilter INCLUDES .shtml
+&lt;/IfModule&gt;
+</code></pre>
+<p>&#xC6F9;&#xC11C;&#xBC84;&#xB294; &#xC774;&#xBBF8;&#xC9C0;&#xB098; &#xB3D9;&#xC601;&#xC0C1; &#xB4F1; &#xB2E4;&#xC591;&#xD55C; &#xD30C;&#xC77C;&#xC744; &#xCC98;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
+<p>MIME &#xD0C0;&#xC785; &#xBC0F; &#xD655;&#xC7A5;&#xC790;&#xC758; &#xC870;&#xD569;&#xC740; &#x2018;/etc/mime.types&#x2019;&#xC5D0; &#xB4F1;&#xB85D;&#xB418;&#xC5B4; &#xC788;&#xB2E4;.</p>
+<p>AddType&#xC744; &#xD1B5;&#xD574;&#xC11C; &#xD30C;&#xC77C; &#xD655;&#xC7A5;&#xC790;&#xB97C; &#xCD94;&#xAC00; &#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
+<ul>
+<li><p>ErrorDocument</p>
+<ul>
+<li>&#xC624;&#xB958; &#xD398;&#xC774;&#xC9C0;&#xB97C; &#xCD9C;&#xB825;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xC758; &#xD398;&#xC774;&#xC9C0;&#xB97C; &#xBCF4;&#xC5EC;&#xC8FC;&#xAE30; &#xC704;&#xD574;&#xC11C; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>EnableSendfile</p>
+<ul>
+<li>&#xC6B4;&#xC601;&#xCCB4;&#xC81C;&#xAC00; sendfile&#xC744; &#xC9C0;&#xC6D0;&#xD558;&#xBA74; &#xC544;&#xD30C;&#xCE58;&#xC5D0;&#xC11C; &#xC804;&#xC1A1;&#xD560; &#xD30C;&#xC77C;&#xC744; &#xC9C1;&#xC811; &#xC77D;&#xC9C0; &#xC54A;&#xC744; &#xC218; &#xC788;&#xB2E4;.</li>
+<li>&#xC774;&#xB807;&#xAC8C;&#xB418;&#xBA74;, read&#xC640; send&#xB97C; &#xB530;&#xB85C; &#xD560; &#xD544;&#xC694;&#xAC00; &#xC5C6;&#xC5B4;&#xC11C; &#xC544;&#xD30C;&#xCE58; &#xC131;&#xB2A5;&#xC774; &#xB9E4;&#xC6B0; &#xBE68;&#xB77C;&#xC9C4;&#xB2E4;.</li>
+<li>&#xADF8;&#xB7EC;&#xB098; sendfile&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xC6F9;&#xC11C;&#xBC84;&#xC758; &#xC548;&#xC815;&#xC131;&#xC774; &#xB5A8;&#xC5B4;&#xC9C4;&#xB2E4;.</li>
+<li>&#xAE30;&#xBCF8; &#xC124;&#xC815;&#xAC12;&#xC740; on&#xC774;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>mod_http2.c</p>
+<ul>
+<li>HTTP2&#xB97C; &#xAE30;&#xBCF8;&#xC73C;&#xB85C; &#xD65C;&#xC131;&#xD654; &#xC2DC;&#xD0A8;&#xB2E4;.</li>
+</ul>
+</li>
+<li><p>IncludeOptional conf.d/*.conf</p>
+<ul>
+<li>/etc/httpd/conf.d &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC5D0; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC774; &#xC788;&#xC73C;&#xBA74; &#xBD88;&#xB7EC;&#xC628;&#xB2E4;.</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="required_pakages.html" class="navigation navigation-prev " aria-label="Previous page: 필수설치프로그램">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Virtual_Hosting.html" class="navigation navigation-next " aria-label="Next page: Virtual Hosting 설정하기">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"httpd.conf 알아보기","level":"3.5","depth":1,"next":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"path":"Virtual_Hosting.md","ref":"Virtual_Hosting.md","articles":[]},"previous":{"title":"필수설치프로그램","level":"3.4","depth":1,"path":"required_pakages.md","ref":"required_pakages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"httpd_conf.md","mtime":"2022-08-22T15:31:00.279Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-22T15:33:33.922Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

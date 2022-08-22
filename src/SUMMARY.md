@@ -11,3 +11,5 @@
 * [vi 에디터 사용법](vi.md)
 * [CentOS yum 사용법](CentOS_yum.md)
 * [필수설치프로그램](required_pakages.md)
+* [httpd.conf 알아보기](httpd_conf.md)
+* [Virtual Hosting 설정하기](Virtual_Hosting.md)

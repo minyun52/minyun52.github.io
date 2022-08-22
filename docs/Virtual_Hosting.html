@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>swap 설치를 통해 ec2 메모리 할당하기 · GitBook</title>
+        <title>Virtual Hosting 설정하기 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="vi.html" />
     
-    
-    <link rel="prev" href="markdown.html" />
+    <link rel="prev" href="httpd_conf.html" />
     
 
     </head>
@@ -142,7 +140,7 @@
         
         
     
-        <li class="chapter active" data-level="3.1" data-path="swap.html">
+        <li class="chapter " data-level="3.1" data-path="swap.html">
             
                 <a href="swap.html">
             
@@ -207,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.6" data-path="Virtual_Hosting.html">
+        <li class="chapter active" data-level="3.6" data-path="Virtual_Hosting.html">
             
                 <a href="Virtual_Hosting.html">
             
@@ -250,7 +248,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >swap 설치를 통해 ec2 메모리 할당하기</a>
+        <a href="." >Virtual Hosting 설정하기</a>
     </h1>
 </div>
 
@@ -265,66 +263,54 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="swap-&#xC124;&#xCE58;&#xB97C;-&#xD1B5;&#xD574;-ec2-&#xBA54;&#xBAA8;&#xB9AC;-&#xD560;&#xB2F9;&#xD558;&#xAE30;">swap &#xC124;&#xCE58;&#xB97C; &#xD1B5;&#xD574; ec2 &#xBA54;&#xBAA8;&#xB9AC; &#xD560;&#xB2F9;&#xD558;&#xAE30;</h1>
-<p>Date: August 3, 2022
-Tags: In progress</p>
-<p>&#xD604;&#xC7AC; &#xC0DD;&#xC131;&#xD55C; ec2 &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xC758; &#xBA54;&#xBAA8;&#xB9AC; &#xC6A9;&#xB7C9;&#xC740; 1gb&#xC774;&#xB2E4;.</p>
-<p>4gb&#xC758; &#xBA54;&#xBAA8;&#xB9AC; &#xC815;&#xBCF4;&#xAC00; &#xB2F4;&#xAE34; &#xC2A4;&#xC651; &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E4;&#xC5B4;&#xC11C; &#xC11C;&#xBC84;&#xC758; &#xBA54;&#xBAA8;&#xB9AC;&#xB97C; &#xCD1D; 5gb&#xB85C; &#xD560;&#xB2F9;&#xD574;&#xBCF4;&#xACA0;&#xB2E4;.</p>
-<p>&#xBA3C;&#xC800; ec2 &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xC5D0; &#xC811;&#xC18D;&#xD588;&#xB2E4;.</p>
-<p><img src="img/swap1.png" alt="swap1"></p>
+                                <h1 id="virtualhosting">Virtual_Hosting</h1>
+<p><a href="https://thewebhacker.com/setting-up-apache-vhosts-on-aws-linux/" target="_blank">&#xCC38;&#xACE0; &#xC790;&#xB8CC;</a></p>
 <ol>
-<li>&#xC6B0;&#xC120; dd &#xBA85;&#xB839;&#xC744; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xB8E8;&#xD2B8; &#xD30C;&#xC77C; &#xC2DC;&#xC2A4;&#xD15C;&#xC5D0; &#xC2A4;&#xC651; &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;.</li>
+<li>&#xBA3C;&#xC800; /etc/httpd/conf.d &#xBC11;&#xC5D0; virtual hosting&#xC744; &#xC124;&#xC815;&#xD560; vhosts.conf &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;</li>
 </ol>
-<pre><code class="lang-java">sudo dd <span class="hljs-keyword">if</span>=/dev/zero of=/swapfile bs=<span class="hljs-number">128</span>M count=<span class="hljs-number">32</span>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> /etc/httpd/conf.d
+&#xB85C; &#xBA3C;&#xC800; &#xC774;&#xB3D9;&#xD574;&#xC900;&#xB2E4;.
+sudo vi vhosts.conf
+&#xB85C; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;.
 </code></pre>
-<ul>
-<li>bs&#xB294; &#xBE14;&#xB85D; &#xD06C;&#xAE30;&#xC774;&#xC624; count&#xB294; &#xBE14;&#xB85D; &#xC218;&#xC774;&#xB2E4;.(128MB x 32)</li>
-<li><p>&#xC870;&#xAE08; &#xAE30;&#xB2E4;&#xB9AC;&#xBA74; 4.3 GB copied &#xB77C;&#xB294; &#xBB38;&#xAD6C;&#xAC00; &#xB098;&#xC624;&#xBA74; &#xC2A4;&#xC651; &#xD30C;&#xC77C;&#xC774; &#xC0DD;&#xC131;&#xB41C;&#xB2E4;</p>
-</li>
-<li><p>&#xC2A4;&#xC651; &#xD30C;&#xC77C;&#xC758; &#xC77D;&#xAE30; &#xBC0F; &#xC4F0;&#xAE30; &#xAD8C;&#xD55C;&#xC744; &#xBCC0;&#xACBD;&#xD574;&#xC900;&#xB2E4;.</p>
-</li>
-</ul>
-<pre><code class="lang-java">sudo chmod <span class="hljs-number">600</span> /swapfile
+<p>&#xC124;&#xC815; &#xD30C;&#xC77C;&#xC5D0; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC740; &#xB0B4;&#xC6A9;&#xC744; &#xC801;&#xC5B4;&#xC900;&#xB2E4;.</p>
+<pre><code class="lang-bash">&lt;VirtualHost *:80&gt;
+
+  ServerName minvhtest.com
+
+  DocumentRoot /var/www/html/minvhtest.com
+
+  &lt;Directory /var/www/html/minvhtest.com&gt;
+    AllowOverride All
+  &lt;/Directory&gt;
+
+&lt;/VirtualHost&gt;
 </code></pre>
-<ol>
-<li>Linux &#xC2A4;&#xC651; &#xC601;&#xC5ED;&#xC744; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</li>
-</ol>
-<pre><code class="lang-java">sudo mkswap /swapfile
+<p>DocumentRoot&#xC5D0; &#xC9C0;&#xC815;&#xD574;&#xC900; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB97C; &#xB3D9;&#xC77C;&#xD55C; &#xACBD;&#xB85C;&#xC5D0; &#xB9CC;&#xB4E4;&#xC5B4;&#xC900;&#xB2E4;.</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> /var/www/html/
+&#xB85C; &#xBA3C;&#xC800; &#xC774;&#xB3D9;&#xC744; &#xD588;&#xB2E4;.
+sudo mkdir minvhtest.com
+&#xC73C;&#xB85C; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB97C; &#xC0DD;&#xC131;&#xD588;&#xB2E4;.
 </code></pre>
-<ul>
-<li>Setting up swapspace version 1 size = 4 Gib</li>
-<li><p>4&#xAE30;&#xAC00;&#xC758; &#xC2A4;&#xC651; &#xC601;&#xC5ED;&#xC774; &#xC138;&#xD305;&#xB41C;&#xB2E4;&#xB294; &#xBB38;&#xAD6C;&#xAC00; &#xB098;&#xC628;&#xB2E4;.</p>
-</li>
-<li><p>&#xC2A4;&#xC651; &#xACF5;&#xAC04;&#xC5D0; &#xD30C;&#xC77C;&#xC744; &#xCD94;&#xAC00;&#xD558;&#xC5EC; &#xC2A4;&#xC651; &#xD30C;&#xC77C;&#xC744; &#xC989;&#xC2DC; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</p>
-</li>
-</ul>
-<pre><code class="lang-java">sudo swapon /swapfile
+<p><a href="http://minvhtest.com" target="_blank">minvhtest.com</a> &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC5D0; &#xAC04;&#xB2E8;&#xD55C; html &#xD654;&#xBA74;&#xC744; &#xB9CC;&#xB4E4;&#xC5C8;&#xB2E4;.</p>
+<p>&#xD37C;&#xBE14;&#xB9AD; &#xC544;&#xC774;&#xD53C; &#xC8FC;&#xC18C;&#xB098; virtual hosting&#xC5D0; &#xC124;&#xC815;&#xD55C; ServerName&#xC73C;&#xB85C; &#xC811;&#xC18D;&#xD558;&#xBA74; &#xD574;&#xB2F9; html&#xC774; &#xB098;&#xC628;&#xB2E4;.</p>
+<pre><code class="lang-bash">sudo vi index.html
 </code></pre>
-<ol>
-<li>&#xD504;&#xB85C;&#xC2DC;&#xC800;&#xAC00; &#xC131;&#xACF5;&#xD588;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD55C;&#xB2E4;.</li>
-</ol>
-<pre><code class="lang-java">sudo swapon -s
+<p>&#xC6D0;&#xD558;&#xB294; &#xAC04;&#xB7B5;&#xD55C; html &#xCF54;&#xB4DC;&#xB97C; &#xC785;&#xB825;&#xD55C;&#xB2E4;.</p>
+<p>&#xADF8;&#xB9AC;&#xACE0; Apache&#xB97C; &#xC7AC;&#xC2DC;&#xC791; &#xD574;&#xC900;&#xB2E4;.</p>
+<pre><code class="lang-bash">sudo service httpd restart
 </code></pre>
-<ul>
-<li><p>&#xC124;&#xC815;&#xB41C; &#xC2A4;&#xC651;&#xD30C;&#xC77C;&#xC758; &#xC815;&#xBCF4;&#xAC00; &#xB098;&#xC628;&#xB2E4;. &#xC124;&#xC815;&#xD55C; &#xC815;&#xBCF4;&#xB791; &#xB9DE;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD55C;&#xB2E4;.</p>
-</li>
-<li><p>ec2 &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xAC00; &#xBD80;&#xD305;&#xB420;&#xB54C; &#xC2A4;&#xC651; &#xD30C;&#xC77C;&#xC744; &#xC2DC;&#xC791;&#xD558;&#xB3C4;&#xB85D; /etc/fstab &#xD30C;&#xC77C;&#xC744; &#xC218;&#xC815;&#xD55C;&#xB2E4;.</p>
-</li>
-</ul>
-<pre><code class="lang-java">sudo vim /etc/fstab
+<p>&#xD574;&#xB2F9; &#xC8FC;&#xC18C;&#xC5D0; &#xC811;&#xC18D;&#xC5D0; &#xC55E;&#xC11C;&#xC11C; &#xB85C;&#xCEEC; &#xD658;&#xACBD;&#xC5D0; hosts &#xD30C;&#xC77C;&#xC5D0; &#xC0C8;&#xB85C;&#xC6B4; &#xB3C4;&#xBA54;&#xC778;&#xC744; &#xB4F1;&#xB85D;&#xD574;&#xC900;&#xB2E4;.</p>
+<p>&#xB098;&#xB294; &#xB9E5;os &#xD658;&#xACBD;&#xC774;&#xB77C; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC774; &#xD574;&#xC8FC;&#xC5C8;&#xB2E4;.</p>
+<pre><code class="lang-bash">sudo vi /etc/hosts
 </code></pre>
-<ul>
-<li>fstab&#xD30C;&#xC77C;&#xC744; vim&#xC73C;&#xB85C; &#xC5F0;&#xB2E4;.</li>
-<li>&#xAE30;&#xC874; &#xBB38;&#xAD6C; &#xB2E4;&#xC74C; &#xC904;&#xC5D0; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC774; &#xC785;&#xB825;&#xD558;&#xACE0; &#xC800;&#xC7A5;&#xD55C;&#xB2E4;.</li>
-</ul>
-<pre><code class="lang-java">/swapfile swap swap defaults <span class="hljs-number">0</span> <span class="hljs-number">0</span>
-</code></pre>
-<p><img src="img/swap2.png" alt="swap2"></p>
-<ol>
-<li>&#xBA54;&#xBAA8;&#xB9AC; &#xD560;&#xB2F9; &#xC124;&#xC815;&#xC774; &#xC885;&#xB8CC;&#xB418;&#xC5C8;&#xB2E4;. &#xC124;&#xC815;&#xB41C; &#xBA54;&#xBAA8;&#xB9AC;&#xB97C; &#xD655;&#xC778;&#xD55C;&#xB2E4;.</li>
-</ol>
-<pre><code class="lang-java">free -h
-</code></pre>
+<p>hosts &#xD30C;&#xC77C;&#xC744; &#xC5F4;&#xACE0; &#xC81C;&#xC77C; &#xD558;&#xB2E8;&#xC5D0;</p>
+<p>&#xD37C;&#xBE14;&#xB9AD; &#xC544;&#xC774;&#xD53C; &#xC8FC;&#xC18C;&#xC640; &#xC124;&#xC815;&#xD55C; &#xB3C4;&#xBA54;&#xC778; &#xC8FC;&#xC18C;&#xB97C; &#xB123;&#xC5B4;&#xC900;&#xB2E4;.</p>
+<p>&#xADF8;&#xB9AC;&#xACE0; &#xC811;&#xC18D;&#xC744; &#xD574;&#xBCF8;&#xB2E4;.</p>
+<p><img src="img/vh1.png" alt="vh1"></p>
+<p>&#xC67C;&#xCABD;&#xC740; &#xB3C4;&#xBA54;&#xC778; &#xC8FC;&#xC18C;&#xB85C; &#xC811;&#xC18D;&#xC744; &#xD558;&#xC600;&#xACE0;</p>
+<p>&#xC624;&#xB978;&#xCABD;&#xC740; &#xD37C;&#xBE14;&#xB9AD; &#xC544;&#xC774;&#xD53C; &#xC8FC;&#xC18C;&#xB85C; &#xC811;&#xC18D;&#xC744; &#xD558;&#xC600;&#xB2E4;.</p>
+<p>&#xB3D9;&#xC77C;&#xD55C; &#xD654;&#xBA74;&#xC774; &#xB098;&#xC624;&#xBA74;&#xC11C; virtual hosting&#xC774; &#xC815;&#xC0C1;&#xC801;&#xC73C;&#xB85C; &#xC124;&#xC815;&#xB41C; &#xAC83;&#xC744; &#xD655;&#xC778;&#xD588;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -352,14 +338,10 @@ Tags: In progress</p>
 
             
                 
-                <a href="markdown.html" class="navigation navigation-prev " aria-label="Previous page: 마크다운이란?">
+                <a href="httpd_conf.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: httpd.conf 알아보기">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="vi.html" class="navigation navigation-next " aria-label="Next page: vi 에디터 사용법">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -368,7 +350,7 @@ Tags: In progress</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"swap 설치를 통해 ec2 메모리 할당하기","level":"3.1","depth":1,"next":{"title":"vi 에디터 사용법","level":"3.2","depth":1,"path":"vi.md","ref":"vi.md","articles":[]},"previous":{"title":"마크다운이란?","level":"2.2","depth":1,"path":"markdown.md","ref":"markdown.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"swap.md","mtime":"2022-08-19T00:12:27.275Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-22T15:33:33.922Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"previous":{"title":"httpd.conf 알아보기","level":"3.5","depth":1,"path":"httpd_conf.md","ref":"httpd_conf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Virtual_Hosting.md","mtime":"2022-08-22T15:31:10.412Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-22T15:33:33.922Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
