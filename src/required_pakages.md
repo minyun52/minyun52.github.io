@@ -91,7 +91,7 @@ resin이 skipped되었다는데 설치가 정상적으로 이루어진거 같지
 # 6. MYSQL5.7 설치
 
 ```bash
-sudo rpm -ivh https://dev.mysql.com/get/mysql57-community-release-el6-11.noarch.rpm
+sudo yum localinstall -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 ```
 
 ```bash
