@@ -266,57 +266,60 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="httpdconf">httpd.conf</h1>
-<ul>
-<li><p>ServerRoot &#x201C;/etc/httpd&#x201D;</p>
+<pre><code class="lang-bash">ServerRoot &#x201C;/etc/httpd&#x201D;
+</code></pre>
 <ul>
 <li>&#xB514;&#xB809;&#xD130;&#xB9AC; &#xD2B8;&#xB9AC;&#xC758; &#xCD5C;&#xC0C1;&#xC704;&#xB97C; &#xB9D0;&#xD55C;&#xB2E4;.</li>
 <li>&#xC5EC;&#xAE30;&#xC5D0; &#xC11C;&#xBC84;&#xC758; &#xC124;&#xC815;, &#xC5D0;&#xB7EC;, &#xB85C;&#xADF8; &#xD30C;&#xC77C;&#xB4E4;&#xC774; &#xC800;&#xC7A5;&#xB41C;&#xB2E4;.</li>
 <li>&#xACBD;&#xB85C; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0; &#x201C;/&#x201D;&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xBA74; &#xC548;&#xB41C;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>Listen 80</p>
+<pre><code class="lang-bash">Listen 80
+</code></pre>
 <ul>
 <li>&#xD2B9;&#xC815; IP&#xC8FC;&#xC18C;&#xC640; &#xD3EC;&#xD2B8;&#xB97C; &#xBB36;&#xC5B4;&#xC8FC;&#xB294; &#xC5ED;&#xD560;&#xC744; &#xD55C;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>Dynamic Shared Object (DSO) Support</p>
+<pre><code class="lang-bash">Dynamic Shared Object (DSO) Support
+</code></pre>
 <ul>
 <li>Apache&#xC640; &#xD638;&#xD658;&#xB418;&#xB294; &#xBAA8;&#xB4C8;&#xC744; &#xB85C;&#xB4DC;&#xD558;&#xB294; &#xC9C0;&#xC2DC;&#xC790;&#xC774;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>Include conf.modules.d/*/.conf</p>
+<pre><code class="lang-bash">Include conf.modules.d/*/.conf
+</code></pre>
 <ul>
 <li>Apache&#xB294; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xBD84;&#xC0B0;&#xC2DC;&#xCF1C; &#xC800;&#xC7A5;&#xD558;&#xC5EC; &#xD544;&#xC694;&#xD55C; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xB9CC; &#xB85C;&#xB4DC;&#xD560; &#xC218; &#xC788;&#xB2E4;.</li>
 <li>&#xC774;&#xB54C; Include&#xB97C; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>User apache</p>
-<p>  Group apache</p>
+<pre><code class="lang-bash">User apache
+Group apache
+</code></pre>
 <ul>
 <li>httpd&#xAC00; &#xC2E4;&#xD589;&#xB420;&#xB54C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xC774;&#xB984;</li>
 </ul>
-</li>
-<li><p>&#x2018;Main&#x2019; server configuration</p>
+<pre><code class="lang-bash">&#x2018;Main&#x2019; server configuration
+</code></pre>
 <ul>
 <li>&#xBA54;&#xC778; &#xC11C;&#xBC84;&#xC5D0;</li>
 <li>virtual host&#xB97C; &#xC0DD;&#xC0C1;&#xD560; &#xB54C; &#xC774; &#xBA54;&#xC778; &#xC11C;&#xBC84; &#xC124;&#xC815;&#xB4E4;&#xC774; &#xAC01; virtual host&#xC758; &#xAE30;&#xBCF8;&#xAC12;&#xC73C;&#xB85C; &#xC0C1;&#xC18D;&#xB41C;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>ServerAdmin root@localhost</p>
+<pre><code class="lang-bash">ServerAdmin root@localhost
+</code></pre>
 <ul>
 <li>&#xC11C;&#xBC84; &#xB0B4;&#xBD80; &#xC624;&#xB958;&#xAC00; &#xBC1C;&#xC0DD;&#xD558;&#xBA74; &#xB744;&#xC6B0;&#xB294; &#xC548;&#xB0B4;&#xBB38;&#xC5D0; &#xCD9C;&#xB825;&#xB420; &#xC11C;&#xBC84; &#xAD00;&#xB9AC;&#xC790; &#xC5F0;&#xB77D;&#xCC98;</li>
 <li>&#xC8FC;&#xB85C; &#xC774;&#xBA54;&#xC77C; &#xC8FC;&#xC18C;&#xB97C; &#xC801;&#xB294;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>ServerName www.example.com:80</p>
+<pre><code class="lang-bash">ServerName www.example.com:80
+</code></pre>
 <ul>
 <li>&#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xC8FC;&#xC11D; &#xCC98;&#xB9AC;&#xB418;&#xC5B4;&#xC788;&#xB2E4;.</li>
 <li>&#xC8FC;&#xC11D;&#xC744; &#xD574;&#xC81C;&#xD558;&#xACE0; &#xC9C0;&#xC815;&#xD558;&#xB294; &#xAC83;&#xC744; &#xAD8C;&#xC7A5;&#xD55C;&#xB2E4;.</li>
 <li>&#xC11C;&#xBC84;&#xB97C; &#xC2DD;&#xBCC4;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xD638;&#xC2A4;&#xD2B8; &#xC774;&#xB984;&#xC744; &#xC9C0;&#xC815;&#xD558;&#xB294; &#xC124;&#xC815;.</li>
 <li>IP&#xC8FC;&#xC18C;&#xB97C; &#xB300;&#xC2E0; &#xC801;&#xC744; &#xC218; &#xC788;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p><directory {디렉터리="" 명}=""></directory></p>
+<pre><code class="lang-bash">&lt;Directory {&#xB514;&#xB809;&#xD130;&#xB9AC; &#xBA85;}&gt;
+        AllowOverride none
+    Require all denied
+&lt;/Directory&gt;
+</code></pre>
 <ul>
 <li>&#xAC01; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC5D0; &#xACE0;&#xC720;&#xD55C; &#xC124;&#xC815;&#xC744; &#xC801;&#xC6A9;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xBE14;&#xB85D;&#xC774;&#xB2E4;.</li>
 <li>&#xB514;&#xB809;&#xD130;&#xB9AC; &#xBA85;&#xC740; &#xC11C;&#xBC84; &#xC790;&#xCCB4;&#xC758; &#xC2E4;&#xC81C; &#xB514;&#xB809;&#xD130;&#xB9AC; &#xC808;&#xB300; &#xACBD;&#xB85C;&#xB97C; &#xC801;&#xB294;&#xB2E4;.</li>
@@ -331,38 +334,29 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>DocumentRoot &#x201C;/var/www/html&#x201D;</p>
+<pre><code class="lang-bash">DocumentRoot &#x201C;/var/www/html&#x201D;
+</code></pre>
 <ul>
 <li>&#xC6F9; &#xD398;&#xC774;&#xC9C0;&#xC758; &#xB8E8;&#xD2B8;&#xB97C; &#xC9C0;&#xC815;&#xD55C;&#xB2E4;.</li>
 <li>&#xBAA8;&#xB4E0; &#xC694;&#xCCAD;&#xC740; &#xC5EC;&#xAE30;&#xC5D0; &#xC9C0;&#xC815;&#xD55C; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xB85C; &#xAC04;&#xB2E4;.</li>
 <li>&#xC2EC;&#xBCFC;&#xB9AD; &#xB9C1;&#xD06C;&#xB098; aliases&#xB97C; &#xD1B5;&#xD574; &#xB2E4;&#xB978; &#xC704;&#xCE58;&#xB85C; &#xBCF4;&#xB0BC; &#xC218; &#xC788;&#xB2E4;.</li>
 </ul>
-</li>
-<li><directory “="" var="" www”="">
-
-  AllowOverride None
-
-  Require all granted
-
-  </directory>
-
+<pre><code class="lang-bash">&lt;Directory &#x201C;/var/www&#x201D;&gt;
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+</code></pre>
 <ul>
 <li>var &#xBC11; www&#xB77C;&#xB294; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC758; &#xC124;&#xC815;</li>
 <li>&#xC124;&#xC815; &#xB36E;&#xC5B4;&#xC4F0;&#xAE30; &#xBD88;&#xAC00;</li>
 <li>&#xBAA8;&#xB4E0; &#xC811;&#xADFC; &#xD5C8;&#xC6A9;</li>
 </ul>
-</li>
-<li><directory “="" var="" www="" html”="">
-
-  Options Indexes FollowSymLinks
-
-  AllowOverride None
-
-  Require all granted
-
-  </directory>
-
+<pre><code class="lang-bash">&lt;Directory &#x201C;/var/www/html&#x201D;&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+</code></pre>
 <ul>
 <li>Options&#xC5D0;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC740; &#xC778;&#xC790;&#xAC00; &#xC62C; &#xC218; &#xC788;&#xB2E4;.</li>
 <li>Indexes : &#xB514;&#xB809;&#xD130;&#xB9AC; &#xACBD;&#xB85C;&#xAC00; &#xC694;&#xCCAD;&#xB418;&#xACE0; DirectoryIndex&#xC5D0; &#xB9DE;&#xB294; &#xD30C;&#xC77C;&#xC774; &#xC5C6;&#xC73C;&#xBA74; &#xD574;&#xB2F9; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC758; &#xBAA9;&#xB85D;&#xC744; &#xCD9C;&#xB825;&#xD55C;&#xB2E4;.</li>
@@ -373,37 +367,32 @@
 <li>None : &#xC5B4;&#xB5A0;&#xD55C; &#xC635;&#xC158;&#xB3C4; &#xC801;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;.</li>
 <li><a href="https://httpd.apache.org/docs/2.4/mod/core.html#servername" target="_blank">&#xB354; &#xB9CE;&#xC740; Options</a></li>
 </ul>
-</li>
-<li><p>DirectoryIndex</p>
+<pre><code class="lang-bash">&lt;IfModule dir_module&gt;
+    DirectoryIndex index.html
+&lt;/IfModule&gt;
+</code></pre>
 <ul>
-<li>&#xC694;&#xCCAD;&#xC5D0;&#xC11C; &#xD30C;&#xC77C;&#xBA85;&#xC774; &#xC0DD;&#xB7B5;&#xB418;&#xC5C8;&#xC744; &#xB54C;, &#xC6F9; &#xC11C;&#xBC84;&#xAC00; &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xCC3E;&#xAC8C; &#xB418;&#xB294; &#xD30C;&#xC77C;&#xC744; &#xC815;&#xC758;&#xD55C;&#xB2E4;.</li>
+<li>DirectoryIndex &#x2192; &#xC694;&#xCCAD;&#xC5D0;&#xC11C; &#xD30C;&#xC77C;&#xBA85;&#xC774; &#xC0DD;&#xB7B5;&#xB418;&#xC5C8;&#xC744; &#xB54C;, &#xC6F9; &#xC11C;&#xBC84;&#xAC00; &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; &#xCC3E;&#xAC8C; &#xB418;&#xB294; &#xD30C;&#xC77C;&#xC744; &#xC815;&#xC758;&#xD55C;&#xB2E4;.</li>
 <li>&#xC5EC;&#xB7EC; &#xD30C;&#xC77C;&#xBA85;&#xC774; &#xB4E4;&#xC5B4;&#xAC08; &#xC218; &#xC788;&#xB2E4;.</li>
 </ul>
-</li>
-<li><files “.ht*”="">
-
-  Require all denied
-
-  </files>
-
+<pre><code class="lang-bash">&lt;Files &#x201C;.ht*&#x201D;&gt;
+    Require all denied
+&lt;/Files&gt;
+</code></pre>
 <ul>
 <li>Files&#xC5D0;&#xC11C;&#xB294; &#xD30C;&#xC77C;&#xC5D0; &#xB300;&#xD55C; &#xC811;&#xADFC; &#xC124;&#xC815;&#xC744; &#xC815;&#xC758;&#xD55C;&#xB2E4;.</li>
 <li>.ht&#xB85C; &#xC2DC;&#xC791;&#xD558;&#xB294; &#xBAA8;&#xB4E0; &#xD30C;&#xC77C;&#xC5D0; &#xC811;&#xADFC;&#xC744; &#xC81C;&#xD55C;&#xD588;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>ErrorLog &#x201C;logs/error_log&#x201D;</p>
+<pre><code class="lang-bash">ErrorLog &#x201C;logs/error_<span class="hljs-built_in">log</span>&#x201D;
+</code></pre>
 <ul>
 <li>&#xC5D0;&#xB7EC; &#xB85C;&#xADF8; &#xD30C;&#xC77C;&#xC758; &#xC704;&#xCE58;&#xB97C; &#xC9C0;&#xC815;&#xD55C;&#xB2E4;.</li>
 <li>virtual host&#xB4E4;&#xC5D0; &#xB530;&#xB85C; &#xC5D0;&#xB7EC; &#xB85C;&#xADF8; &#xC704;&#xCE58;&#xB97C; &#xC9C0;&#xC815;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xC5EC;&#xAE30;&#xC5D0; &#xC800;&#xC7A5;&#xC774; &#xB41C;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>LogLevel warn</p>
+<pre><code class="lang-bash">LogLevel warn
+</code></pre>
 <ul>
 <li>error log&#xC5D0; &#xB0A8;&#xACA8;&#xC9C0;&#xB294; &#xB85C;&#xADF8;&#xC758; &#xC22B;&#xC790;&#xB97C; &#xC9C0;&#xC815;&#xD558;&#xB294; &#xC124;&#xC815;&#xC774;&#xB2E4;.</li>
-</ul>
-</li>
-<li><p>log_config_module</p>
-</li>
 </ul>
 <pre><code class="lang-bash">&lt;IfModule <span class="hljs-built_in">log</span>_config_module&gt;
     LogFormat <span class="hljs-string">&quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot;</span> combined
@@ -465,9 +454,6 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li>mim_module</li>
-</ul>
 <pre><code class="lang-bash">&lt;IfModule mime_module&gt;
     TypesConfig /etc/mime.types
 
@@ -481,30 +467,30 @@
 <p>&#xC6F9;&#xC11C;&#xBC84;&#xB294; &#xC774;&#xBBF8;&#xC9C0;&#xB098; &#xB3D9;&#xC601;&#xC0C1; &#xB4F1; &#xB2E4;&#xC591;&#xD55C; &#xD30C;&#xC77C;&#xC744; &#xCC98;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
 <p>MIME &#xD0C0;&#xC785; &#xBC0F; &#xD655;&#xC7A5;&#xC790;&#xC758; &#xC870;&#xD569;&#xC740; &#x2018;/etc/mime.types&#x2019;&#xC5D0; &#xB4F1;&#xB85D;&#xB418;&#xC5B4; &#xC788;&#xB2E4;.</p>
 <p>AddType&#xC744; &#xD1B5;&#xD574;&#xC11C; &#xD30C;&#xC77C; &#xD655;&#xC7A5;&#xC790;&#xB97C; &#xCD94;&#xAC00; &#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
-<ul>
-<li><p>ErrorDocument</p>
+<pre><code class="lang-bash">ErrorDocument
+</code></pre>
 <ul>
 <li>&#xC624;&#xB958; &#xD398;&#xC774;&#xC9C0;&#xB97C; &#xCD9C;&#xB825;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xC758; &#xD398;&#xC774;&#xC9C0;&#xB97C; &#xBCF4;&#xC5EC;&#xC8FC;&#xAE30; &#xC704;&#xD574;&#xC11C; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>EnableSendfile</p>
+<pre><code class="lang-bash">EnableSendfile
+</code></pre>
 <ul>
 <li>&#xC6B4;&#xC601;&#xCCB4;&#xC81C;&#xAC00; sendfile&#xC744; &#xC9C0;&#xC6D0;&#xD558;&#xBA74; &#xC544;&#xD30C;&#xCE58;&#xC5D0;&#xC11C; &#xC804;&#xC1A1;&#xD560; &#xD30C;&#xC77C;&#xC744; &#xC9C1;&#xC811; &#xC77D;&#xC9C0; &#xC54A;&#xC744; &#xC218; &#xC788;&#xB2E4;.</li>
 <li>&#xC774;&#xB807;&#xAC8C;&#xB418;&#xBA74;, read&#xC640; send&#xB97C; &#xB530;&#xB85C; &#xD560; &#xD544;&#xC694;&#xAC00; &#xC5C6;&#xC5B4;&#xC11C; &#xC544;&#xD30C;&#xCE58; &#xC131;&#xB2A5;&#xC774; &#xB9E4;&#xC6B0; &#xBE68;&#xB77C;&#xC9C4;&#xB2E4;.</li>
 <li>&#xADF8;&#xB7EC;&#xB098; sendfile&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xC6F9;&#xC11C;&#xBC84;&#xC758; &#xC548;&#xC815;&#xC131;&#xC774; &#xB5A8;&#xC5B4;&#xC9C4;&#xB2E4;.</li>
 <li>&#xAE30;&#xBCF8; &#xC124;&#xC815;&#xAC12;&#xC740; on&#xC774;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>mod_http2.c</p>
+<pre><code class="lang-bash">&lt;IfModule mod_http2.c&gt;
+    Protocols h2 h2c http/1.1
+&lt;/IfModule&gt;
+</code></pre>
 <ul>
-<li>HTTP2&#xB97C; &#xAE30;&#xBCF8;&#xC73C;&#xB85C; &#xD65C;&#xC131;&#xD654; &#xC2DC;&#xD0A8;&#xB2E4;.</li>
+<li>mod_http2.c &#x2192; HTTP2&#xB97C; &#xAE30;&#xBCF8;&#xC73C;&#xB85C; &#xD65C;&#xC131;&#xD654; &#xC2DC;&#xD0A8;&#xB2E4;.</li>
 </ul>
-</li>
-<li><p>IncludeOptional conf.d/*.conf</p>
+<pre><code class="lang-bash">IncludeOptional conf.d/*.conf
+</code></pre>
 <ul>
 <li>/etc/httpd/conf.d &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC5D0; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC774; &#xC788;&#xC73C;&#xBA74; &#xBD88;&#xB7EC;&#xC628;&#xB2E4;.</li>
-</ul>
-</li>
 </ul>
 
                                 
@@ -549,7 +535,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"httpd.conf 알아보기","level":"3.5","depth":1,"next":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"path":"Virtual_Hosting.md","ref":"Virtual_Hosting.md","articles":[]},"previous":{"title":"필수설치프로그램","level":"3.4","depth":1,"path":"required_pakages.md","ref":"required_pakages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"httpd_conf.md","mtime":"2022-08-22T15:31:00.279Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-22T15:33:33.922Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"httpd.conf 알아보기","level":"3.5","depth":1,"next":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"path":"Virtual_Hosting.md","ref":"Virtual_Hosting.md","articles":[]},"previous":{"title":"필수설치프로그램","level":"3.4","depth":1,"path":"required_pakages.md","ref":"required_pakages.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"httpd_conf.md","mtime":"2022-08-23T04:20:20.261Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-23T04:20:48.959Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
