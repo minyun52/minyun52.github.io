@@ -38,34 +38,6 @@ ll /usr/lib64/httpd/modules | grep ssl
 
 가상호스트에 SSL 인증서를 설정하려면 개인키와 인증서에 대한 설정이 필요하다.
 
-### 개인키 생성하기
-
-openssl을 통해서 개인키를 생성하는 방법으로 진행하였다.
-
-```bash
-sudo openssl genrsa -out /etc/pki/tls/private/demo.key 2048
-```
-
-2048bit의 개인키를 별도의 비밀번호 없이 만들었다.
-
-### SSL 발급 요청서(CSR) 만들기
-
-위에서 생성한 개인키로 csr 파일을 만든다.
-
-csr은 Certificate Signing Request의 약자로 서버인증서의 발급신청을 위해 인증기관에게 보낼 요청 파일이다.
-
-```bash
-openssl req -new -key /etc/pki/tls/private/demo.key -out /etc/pki/tls/certs/demo.csr
-```
-
-위 명령어를 입력하면 아래와 같은 문구가 나온다
-
-![ssl1](/img/ssl1.png)
-
-국가코드에는 KR을 입력하고 다음에 나오는 입력 사항들도 맞추어 입력해주었다.
-
-certs 디렉터리를 확인하면 demo.csr이 생성되었다.
-
 ### Let’s Encrypt로 SSL 인증서 발급
 
 lets encrypt는 ACME 프로토콜을 사용하여 도메인명의 유효성을 확인하고 인증서를 발급한다.
