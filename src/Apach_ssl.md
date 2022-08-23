@@ -60,8 +60,6 @@ openssl req -new -key /etc/pki/tls/private/demo.key -out /etc/pki/tls/certs/demo
 
 위 명령어를 입력하면 아래와 같은 문구가 나온다
 
-![Untitled](Apache%E1%84%8B%E1%85%A6%20SSL%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF%20%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8E%E1%85%B5%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%20a08363e8699543b190c49a008aaf9eba/Untitled.png)
-
 ![ssl1](/img/ssl1.png)
 
 국가코드에는 KR을 입력하고 다음에 나오는 입력 사항들도 맞추어 입력해주었다.
@@ -171,8 +169,6 @@ sudo systemctl start httpd
 ```
 
 그리고 설정한 도메인으로 접속을 해본다.
-
-![Untitled](Apache%E1%84%8B%E1%85%A6%20SSL%20%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF%20%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8E%E1%85%B5%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%20a08363e8699543b190c49a008aaf9eba/Untitled%201.png)
 
 ![ssl2](/img/ssl2.png)
 
