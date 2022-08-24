@@ -6,24 +6,16 @@
 
 ```bash
 cd /etc/httpd/conf.d
-로 먼저 이동해준다.
 sudo vi vhosts.conf
-로 설정 파일을 만든다.
 ```
-
+conf.d로 먼저 이동해준다.
+vhosts.conf라는 설정 파일을 만든다.
 설정 파일에 다음과 같은 내용을 적어준다.
 
 ```bash
 <VirtualHost *:80>
-
   ServerName minvhtest.com
-
   DocumentRoot /var/www/html/minvhtest.com
-
-  <Directory /var/www/html/minvhtest.com>
-    AllowOverride All
-  </Directory>
-
 </VirtualHost>
 ```
 
@@ -31,10 +23,11 @@ DocumentRoot에 지정해준 디렉터리를 동일한 경로에 만들어준다
 
 ```bash
 cd /var/www/html/
-로 먼저 이동을 했다.
 sudo mkdir minvhtest.com
-으로 디렉터리를 생성했다.
 ```
+
+html 디렉터리로 먼저 이동해준다.
+가상호스트에 DocumentRoot로 설정한 디렉터리를 만들어준다.
 
 [minvhtest.com](http://minvhtest.com) 디렉터리에 간단한 html 화면을 만들었다.
 

@@ -284,29 +284,22 @@
 <li>&#xBA3C;&#xC800; /etc/httpd/conf.d &#xBC11;&#xC5D0; virtual hosting&#xC744; &#xC124;&#xC815;&#xD560; vhosts.conf &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;</li>
 </ol>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> /etc/httpd/conf.d
-&#xB85C; &#xBA3C;&#xC800; &#xC774;&#xB3D9;&#xD574;&#xC900;&#xB2E4;.
 sudo vi vhosts.conf
-&#xB85C; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;.
 </code></pre>
-<p>&#xC124;&#xC815; &#xD30C;&#xC77C;&#xC5D0; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC740; &#xB0B4;&#xC6A9;&#xC744; &#xC801;&#xC5B4;&#xC900;&#xB2E4;.</p>
+<p>conf.d&#xB85C; &#xBA3C;&#xC800; &#xC774;&#xB3D9;&#xD574;&#xC900;&#xB2E4;.
+vhosts.conf&#xB77C;&#xB294; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;.
+&#xC124;&#xC815; &#xD30C;&#xC77C;&#xC5D0; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC740; &#xB0B4;&#xC6A9;&#xC744; &#xC801;&#xC5B4;&#xC900;&#xB2E4;.</p>
 <pre><code class="lang-bash">&lt;VirtualHost *:80&gt;
-
   ServerName minvhtest.com
-
   DocumentRoot /var/www/html/minvhtest.com
-
-  &lt;Directory /var/www/html/minvhtest.com&gt;
-    AllowOverride All
-  &lt;/Directory&gt;
-
 &lt;/VirtualHost&gt;
 </code></pre>
 <p>DocumentRoot&#xC5D0; &#xC9C0;&#xC815;&#xD574;&#xC900; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB97C; &#xB3D9;&#xC77C;&#xD55C; &#xACBD;&#xB85C;&#xC5D0; &#xB9CC;&#xB4E4;&#xC5B4;&#xC900;&#xB2E4;.</p>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> /var/www/html/
-&#xB85C; &#xBA3C;&#xC800; &#xC774;&#xB3D9;&#xC744; &#xD588;&#xB2E4;.
 sudo mkdir minvhtest.com
-&#xC73C;&#xB85C; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB97C; &#xC0DD;&#xC131;&#xD588;&#xB2E4;.
 </code></pre>
+<p>html &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB85C; &#xBA3C;&#xC800; &#xC774;&#xB3D9;&#xD574;&#xC900;&#xB2E4;.
+&#xAC00;&#xC0C1;&#xD638;&#xC2A4;&#xD2B8;&#xC5D0; DocumentRoot&#xB85C; &#xC124;&#xC815;&#xD55C; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xB97C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC900;&#xB2E4;.</p>
 <p><a href="http://minvhtest.com" target="_blank">minvhtest.com</a> &#xB514;&#xB809;&#xD130;&#xB9AC;&#xC5D0; &#xAC04;&#xB2E8;&#xD55C; html &#xD654;&#xBA74;&#xC744; &#xB9CC;&#xB4E4;&#xC5C8;&#xB2E4;.</p>
 <p>&#xD37C;&#xBE14;&#xB9AD; &#xC544;&#xC774;&#xD53C; &#xC8FC;&#xC18C;&#xB098; virtual hosting&#xC5D0; &#xC124;&#xC815;&#xD55C; ServerName&#xC73C;&#xB85C; &#xC811;&#xC18D;&#xD558;&#xBA74; &#xD574;&#xB2F9; html&#xC774; &#xB098;&#xC628;&#xB2E4;.</p>
 <pre><code class="lang-bash">sudo vi index.html
@@ -369,7 +362,7 @@ sudo mkdir minvhtest.com
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"next":{"title":"Apache에 SSL인증서 설치하기","level":"3.7","depth":1,"path":"Apach_ssl.md","ref":"Apach_ssl.md","articles":[]},"previous":{"title":"httpd.conf 알아보기","level":"3.5","depth":1,"path":"httpd_conf.md","ref":"httpd_conf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Virtual_Hosting.md","mtime":"2022-08-22T15:31:10.412Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-23T15:53:20.806Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"next":{"title":"Apache에 SSL인증서 설치하기","level":"3.7","depth":1,"path":"Apach_ssl.md","ref":"Apach_ssl.md","articles":[]},"previous":{"title":"httpd.conf 알아보기","level":"3.5","depth":1,"path":"httpd_conf.md","ref":"httpd_conf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Virtual_Hosting.md","mtime":"2022-08-24T08:56:41.593Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-24T09:01:37.424Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
