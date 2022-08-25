@@ -42,7 +42,7 @@ sudo vi index.html
 그리고 Apache를 재시작 해준다.
 
 ```bash
-sudo service httpd restart
+sudo systemctl restart httpd
 ```
 
 해당 주소에 접속에 앞서서 로컬 환경에 hosts 파일에 새로운 도메인을 등록해준다.
