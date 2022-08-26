@@ -71,7 +71,21 @@ sudo yum install certbot python2-certbot-apache
 5. nginx
     1. Nginx로 인증서 획득 및 설치를 자동화한다.
 
-인증서 발급에는 standalone 옵션으로 진행하였다.
+## 인증서 발급 옵션 1 : Webroot
+
+certbot의 webroot 옵션으로 인증서를 발급 받는다.
+
+```bash
+sudo certbot --webroot -w /var/www/html/goodluckmin.ze.to -d goodluckmin.ze.to certonly
+```
+
+-w 옵션 뒤에는 루트 디렉터리 경로를 지정해준다.
+
+-d 뒤에는 인증서를 발급 받고자하는 도메인을 지정해준다.
+
+certonly 옵션은 certbot이 웹서버 구성파일을 직접 수정하지 못하도록 한다.
+
+## 인증서 발급 옵션 2 : standalone
 
 먼저 웹서버를 중지시킨다.
 
@@ -123,6 +137,9 @@ sudo vi /etc/httpd/conf.d/ssl.conf
 
 ```bash
 <VirtualHost _default_:443>
+    ...
+    DocumentRoot "/var/www/html/goodluckmin.ze.to"
+    ServerName www.goodluckmin.ze.to:443
     SSLCertificateFile /etc/letsencrypt/live/goodluckmin.ze.to/cert.pem
     SSLCertificateKeyFile /etc/letsencrypt/live/goodluckmin.ze.to/privkey.pem
     SSLCertificateChainFile /etc/letsencrypt/live/goodluckmin.ze.to/chain.pem
@@ -134,7 +151,48 @@ sudo vi /etc/httpd/conf.d/ssl.conf
 
 기존에 존재하는 설정은 주석처리를 해주었다.
 
-다시 웹서버를 가동 시켜준다.
+그리고 http프로토콜로 들어오는 경우에 https로 리다이렉트를 시키기위해 vhosts.conf 파일에 설정을 추가해준다
+
+```bash
+<VirtualHost *:80>
+    ...
+    RewriteEngine on
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</VirtualHost>
+```
+
+추가된 설정을 설명하자면, 
+
+ReqwirteEngine on
+
+리다이렉트 활성화 여부를 설정한다.
+
+RewriteCond %{HTTPS} off
+
+RewriteRule과 함께 사용되는 규칙이다.
+
+RewriteCond에서 설정한 패턴에 일치하면 RewrtieRule을 실행한다.
+
+https가 off인 경우 즉, http로 들어오는 요청인경우를 말한다.
+
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteRule [input URL] [return URL] 형식으로 작성한다
+
+() → 괄호 안의 문자/문자열을 그룹으로 묶는다.
+
+. → 다수의 한문자
+
+* → 0개 이상의 문자 또는 문자열
+
+즉, http로 들어오는 모든 문자열을 뒤에 return URL로 보내준다라는 뜻이다.
+
+R → 리다이렉트, return URL로 넘긴다라는 옵션
+
+L → 뒤구문 여부를 무시하고 이 줄에서 끝낸다라는 옵션
+
+standalone 옵셥으로 진행 한 경우에는 설정을 마치면 다시 웹서버를 가동 시켜준다.
 
 ```bash
 sudo systemctl start httpd

@@ -218,9 +218,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.7" data-path="Apach_ssl.html">
+        <li class="chapter active" data-level="3.7" data-path="Apache_SSL.html">
             
-                <a href="Apach_ssl.html">
+                <a href="Apache_SSL.html">
             
                     
                     Apache에 SSL인증서 설치하기
@@ -331,7 +331,14 @@
 </ol>
 </li>
 </ol>
-<p>&#xC778;&#xC99D;&#xC11C; &#xBC1C;&#xAE09;&#xC5D0;&#xB294; standalone &#xC635;&#xC158;&#xC73C;&#xB85C; &#xC9C4;&#xD589;&#xD558;&#xC600;&#xB2E4;.</p>
+<h2 id="&#xC778;&#xC99D;&#xC11C;-&#xBC1C;&#xAE09;-&#xC635;&#xC158;-1--webroot">&#xC778;&#xC99D;&#xC11C; &#xBC1C;&#xAE09; &#xC635;&#xC158; 1 : Webroot</h2>
+<p>certbot&#xC758; webroot &#xC635;&#xC158;&#xC73C;&#xB85C; &#xC778;&#xC99D;&#xC11C;&#xB97C; &#xBC1C;&#xAE09; &#xBC1B;&#xB294;&#xB2E4;.</p>
+<pre><code class="lang-bash">sudo certbot --webroot -w /var/www/html/goodluckmin.ze.to <span class="hljs-_">-d</span> goodluckmin.ze.to certonly
+</code></pre>
+<p>-w &#xC635;&#xC158; &#xB4A4;&#xC5D0;&#xB294; &#xB8E8;&#xD2B8; &#xB514;&#xB809;&#xD130;&#xB9AC; &#xACBD;&#xB85C;&#xB97C; &#xC9C0;&#xC815;&#xD574;&#xC900;&#xB2E4;.</p>
+<p>-d &#xB4A4;&#xC5D0;&#xB294; &#xC778;&#xC99D;&#xC11C;&#xB97C; &#xBC1C;&#xAE09; &#xBC1B;&#xACE0;&#xC790;&#xD558;&#xB294; &#xB3C4;&#xBA54;&#xC778;&#xC744; &#xC9C0;&#xC815;&#xD574;&#xC900;&#xB2E4;.</p>
+<p>certonly &#xC635;&#xC158;&#xC740; certbot&#xC774; &#xC6F9;&#xC11C;&#xBC84; &#xAD6C;&#xC131;&#xD30C;&#xC77C;&#xC744; &#xC9C1;&#xC811; &#xC218;&#xC815;&#xD558;&#xC9C0; &#xBABB;&#xD558;&#xB3C4;&#xB85D; &#xD55C;&#xB2E4;.</p>
+<h2 id="&#xC778;&#xC99D;&#xC11C;-&#xBC1C;&#xAE09;-&#xC635;&#xC158;-2--standalone">&#xC778;&#xC99D;&#xC11C; &#xBC1C;&#xAE09; &#xC635;&#xC158; 2 : standalone</h2>
 <p>&#xBA3C;&#xC800; &#xC6F9;&#xC11C;&#xBC84;&#xB97C; &#xC911;&#xC9C0;&#xC2DC;&#xD0A8;&#xB2E4;.</p>
 <pre><code class="lang-bash">sudo systemctl stop httpd
 </code></pre>
@@ -363,6 +370,9 @@
 <pre><code class="lang-bash">sudo vi /etc/httpd/conf.d/ssl.conf
 </code></pre>
 <pre><code class="lang-bash">&lt;VirtualHost _default_:443&gt;
+    ...
+    DocumentRoot <span class="hljs-string">&quot;/var/www/html/goodluckmin.ze.to&quot;</span>
+    ServerName www.goodluckmin.ze.to:443
     SSLCertificateFile /etc/letsencrypt/live/goodluckmin.ze.to/cert.pem
     SSLCertificateKeyFile /etc/letsencrypt/live/goodluckmin.ze.to/privkey.pem
     SSLCertificateChainFile /etc/letsencrypt/live/goodluckmin.ze.to/chain.pem
@@ -371,7 +381,32 @@
 </code></pre>
 <p>&#xC0C8;&#xB85C; &#xBC1C;&#xAE09;&#xBC1B;&#xC740; &#xD0A4;&#xC640; &#xC778;&#xC99D;&#xC11C;&#xB4E4;&#xC744; VirtualHost <em>default</em>:443 &#xBC11;&#xC5D0; &#xC815;&#xC758;&#xD574;&#xC900;&#xB2E4;.</p>
 <p>&#xAE30;&#xC874;&#xC5D0; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xC124;&#xC815;&#xC740; &#xC8FC;&#xC11D;&#xCC98;&#xB9AC;&#xB97C; &#xD574;&#xC8FC;&#xC5C8;&#xB2E4;.</p>
-<p>&#xB2E4;&#xC2DC; &#xC6F9;&#xC11C;&#xBC84;&#xB97C; &#xAC00;&#xB3D9; &#xC2DC;&#xCF1C;&#xC900;&#xB2E4;.</p>
+<p>&#xADF8;&#xB9AC;&#xACE0; http&#xD504;&#xB85C;&#xD1A0;&#xCF5C;&#xB85C; &#xB4E4;&#xC5B4;&#xC624;&#xB294; &#xACBD;&#xC6B0;&#xC5D0; https&#xB85C; &#xB9AC;&#xB2E4;&#xC774;&#xB809;&#xD2B8;&#xB97C; &#xC2DC;&#xD0A4;&#xAE30;&#xC704;&#xD574; vhosts.conf &#xD30C;&#xC77C;&#xC5D0; &#xC124;&#xC815;&#xC744; &#xCD94;&#xAC00;&#xD574;&#xC900;&#xB2E4;</p>
+<pre><code class="lang-bash">&lt;VirtualHost *:80&gt;
+    ...
+    RewriteEngine on
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>&#xCD94;&#xAC00;&#xB41C; &#xC124;&#xC815;&#xC744; &#xC124;&#xBA85;&#xD558;&#xC790;&#xBA74;, </p>
+<p>ReqwirteEngine on</p>
+<p>&#xB9AC;&#xB2E4;&#xC774;&#xB809;&#xD2B8; &#xD65C;&#xC131;&#xD654; &#xC5EC;&#xBD80;&#xB97C; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</p>
+<p>RewriteCond %{HTTPS} off</p>
+<p>RewriteRule&#xACFC; &#xD568;&#xAED8; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xADDC;&#xCE59;&#xC774;&#xB2E4;.</p>
+<p>RewriteCond&#xC5D0;&#xC11C; &#xC124;&#xC815;&#xD55C; &#xD328;&#xD134;&#xC5D0; &#xC77C;&#xCE58;&#xD558;&#xBA74; RewrtieRule&#xC744; &#xC2E4;&#xD589;&#xD55C;&#xB2E4;.</p>
+<p>https&#xAC00; off&#xC778; &#xACBD;&#xC6B0; &#xC989;, http&#xB85C; &#xB4E4;&#xC5B4;&#xC624;&#xB294; &#xC694;&#xCCAD;&#xC778;&#xACBD;&#xC6B0;&#xB97C; &#xB9D0;&#xD55C;&#xB2E4;.</p>
+<p>RewriteRule (.*) <a href="https://%{HTTP_HOST}%{REQUEST_URI}" target="_blank">https://%{HTTP_HOST}%{REQUEST_URI}</a> [R=301,L]</p>
+<p>RewriteRule [input URL] [return URL] &#xD615;&#xC2DD;&#xC73C;&#xB85C; &#xC791;&#xC131;&#xD55C;&#xB2E4;</p>
+<p>() &#x2192; &#xAD04;&#xD638; &#xC548;&#xC758; &#xBB38;&#xC790;/&#xBB38;&#xC790;&#xC5F4;&#xC744; &#xADF8;&#xB8F9;&#xC73C;&#xB85C; &#xBB36;&#xB294;&#xB2E4;.</p>
+<p>. &#x2192; &#xB2E4;&#xC218;&#xC758; &#xD55C;&#xBB38;&#xC790;</p>
+<ul>
+<li>&#x2192; 0&#xAC1C; &#xC774;&#xC0C1;&#xC758; &#xBB38;&#xC790; &#xB610;&#xB294; &#xBB38;&#xC790;&#xC5F4;</li>
+</ul>
+<p>&#xC989;, http&#xB85C; &#xB4E4;&#xC5B4;&#xC624;&#xB294; &#xBAA8;&#xB4E0; &#xBB38;&#xC790;&#xC5F4;&#xC744; &#xB4A4;&#xC5D0; return URL&#xB85C; &#xBCF4;&#xB0B4;&#xC900;&#xB2E4;&#xB77C;&#xB294; &#xB73B;&#xC774;&#xB2E4;.</p>
+<p>R &#x2192; &#xB9AC;&#xB2E4;&#xC774;&#xB809;&#xD2B8;, return URL&#xB85C; &#xB118;&#xAE34;&#xB2E4;&#xB77C;&#xB294; &#xC635;&#xC158;</p>
+<p>L &#x2192; &#xB4A4;&#xAD6C;&#xBB38; &#xC5EC;&#xBD80;&#xB97C; &#xBB34;&#xC2DC;&#xD558;&#xACE0; &#xC774; &#xC904;&#xC5D0;&#xC11C; &#xB05D;&#xB0B8;&#xB2E4;&#xB77C;&#xB294; &#xC635;&#xC158;</p>
+<p>standalone &#xC635;&#xC165;&#xC73C;&#xB85C; &#xC9C4;&#xD589; &#xD55C; &#xACBD;&#xC6B0;&#xC5D0;&#xB294; &#xC124;&#xC815;&#xC744; &#xB9C8;&#xCE58;&#xBA74; &#xB2E4;&#xC2DC; &#xC6F9;&#xC11C;&#xBC84;&#xB97C; &#xAC00;&#xB3D9; &#xC2DC;&#xCF1C;&#xC900;&#xB2E4;.</p>
 <pre><code class="lang-bash">sudo systemctl start httpd
 </code></pre>
 <p>&#xADF8;&#xB9AC;&#xACE0; &#xC124;&#xC815;&#xD55C; &#xB3C4;&#xBA54;&#xC778;&#xC73C;&#xB85C; &#xC811;&#xC18D;&#xC744; &#xD574;&#xBCF8;&#xB2E4;.</p>
@@ -416,7 +451,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Apache에 SSL인증서 설치하기","level":"3.7","depth":1,"previous":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"path":"Virtual_Hosting.md","ref":"Virtual_Hosting.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Apach_ssl.md","mtime":"2022-08-23T15:53:03.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-25T00:08:26.874Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Apache에 SSL인증서 설치하기","level":"3.7","depth":1,"previous":{"title":"Virtual Hosting 설정하기","level":"3.6","depth":1,"path":"Virtual_Hosting.md","ref":"Virtual_Hosting.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Apache_SSL.md","mtime":"2022-08-25T23:59:54.471Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-26T00:00:22.013Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
