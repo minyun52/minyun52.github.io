@@ -1,0 +1,516 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ssl.conf 알아보기 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Apache_SSL.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">깃 배우기</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="pull_request.html">
+            
+                <a href="pull_request.html">
+            
+                    
+                    Pull Request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="markdown.html">
+            
+                <a href="markdown.html">
+            
+                    
+                    마크다운이란?
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">서버 배우기</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="swap.html">
+            
+                <a href="swap.html">
+            
+                    
+                    swap 설치를 통해 ec2 메모리 할당하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="vi.html">
+            
+                <a href="vi.html">
+            
+                    
+                    vi 에디터 사용법
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="CentOS_yum.html">
+            
+                <a href="CentOS_yum.html">
+            
+                    
+                    CentOS yum 사용법
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="required_pakages.html">
+            
+                <a href="required_pakages.html">
+            
+                    
+                    필수설치프로그램
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="httpd_conf.html">
+            
+                <a href="httpd_conf.html">
+            
+                    
+                    httpd.conf 알아보기
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="Virtual_Hosting.html">
+            
+                <a href="Virtual_Hosting.html">
+            
+                    
+                    Virtual Hosting 설정하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="Apache_SSL.html">
+            
+                <a href="Apache_SSL.html">
+            
+                    
+                    Apache에 SSL인증서 설치하기
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.8" data-path="Apache_ssl_conf.html">
+            
+                <a href="Apache_ssl_conf.html">
+            
+                    
+                    ssl.conf 알아보기
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >ssl.conf 알아보기</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="apachesslconf">Apache_ssl.conf</h1>
+<p>Date: August 26, 2022</p>
+<pre><code class="lang-bash">SSLPassPhraseDialog <span class="hljs-built_in">exec</span>:/usr/libexec/httpd-ssl-pass-dialog
+</code></pre>
+<p>&#xC544;&#xD30C;&#xCE58;&#xAC00; &#xC2DC;&#xC791;&#xB420; &#xB54C; &#xC5EC;&#xB7EC; &#xC778;&#xC99D;&#xC11C;&#xC640; &#xAC1C;&#xC778;&#xD0A4; &#xD30C;&#xC77C;&#xC744; &#xC77D;&#xB294;&#xB2E4;. &#xAC1C;&#xC778;&#xD0A4; &#xD30C;&#xC77C;&#xB4E4;&#xC740; &#xBCF4;&#xD1B5; &#xC554;&#xD638;&#xD654; &#xCC98;&#xB9AC;&#xAC00; &#xB418;&#xC5B4;&#xC788;&#xC5B4;&#xC11C; mod_ssl &#xBAA8;&#xB4C8;&#xC740; &#xBCF5;&#xD638;&#xD654;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C; passphrase&#xB97C; &#xAD00;&#xB9AC;&#xC790;&#xC5D0;&#xAC8C; &#xC694;&#xCCAD;&#xD55C;&#xB2E4;. &#xC774; &#xC694;&#xCCAD;&#xC740; 2&#xAC00;&#xC9C0; &#xD0C0;&#xC785;&#xC73C;&#xB85C; &#xAC00;&#xB2A5;&#xD558;&#xB2E4;.</p>
+<ol>
+<li>builtin<ol>
+<li>&#xAE30;&#xBCF8;&#xAC12;</li>
+</ol>
+</li>
+<li>exec : / path / to / program<ol>
+<li>&#xC544;&#xD30C;&#xCE58;&#xAC00; &#xC2DC;&#xC791;&#xD560;&#xB54C; &#xAC1C;&#xC778;&#xD0A4; &#xD30C;&#xC77C;&#xC744; &#xC77D;&#xC740; &#xC678;&#xBD80; &#xD504;&#xB85C;&#xADF8;&#xB7A8;&#xC744; &#xC9C0;&#xC815;&#xD558;&#xB294; &#xBC29;&#xC2DD;</li>
+</ol>
+</li>
+</ol>
+<pre><code class="lang-bash">SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
+SSLSessionCacheTimeout  300
+</code></pre>
+<p>SSL Session Cache&#xB97C; &#xC5B4;&#xB5BB;&#xAC8C; &#xBCF4;&#xAD00;&#xD560;&#xC9C0; &#xC815;&#xD558;&#xB294; &#xC124;&#xC815;.</p>
+<p>&#xBCD1;&#xB82C;&#xCC98;&#xB9AC;&#xC694;&#xCCAD;&#xC5D0; &#xC18D;&#xB3C4;&#xB97C; &#xD5A5;&#xC0C1;&#xC2DC;&#xD0A4;&#xAE30; &#xC704;&#xD55C; &#xC635;&#xC158;&#xB4E4;&#xC774; &#xC788;&#xB2E4;.</p>
+<ol>
+<li>none<ol>
+<li>&#xAE30;&#xBCF8;&#xAC12;</li>
+<li>global/interprocess SSL Session Cashe&#xB97C; &#xBE44;&#xD65C;&#xC131;&#xD654;&#xD55C;&#xB2E4;.</li>
+<li>&#xAE30;&#xB2A5;&#xC0C1; &#xB2E8;&#xC810;&#xC740; &#xC5C6;&#xC9C0;&#xB9CC; &#xB208;&#xC5D0; &#xB744;&#xB294; &#xC18D;&#xB3C4; &#xC800;&#xD558;&#xAC00; &#xC0DD;&#xAE38; &#xC218; &#xC788;&#xB2E4;.</li>
+</ol>
+</li>
+<li>dbm: /path/to/datafile<ol>
+<li>&#xB85C;&#xCEEC; &#xC800;&#xC7A5;&#xACF5;&#xAC04;&#xC758; DBM hashfile&#xB97C; &#xC0AC;&#xC6A9;&#xD574;&#xC11C; &#xC11C;&#xBC84; &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC758; &#xB85C;&#xCEEC; OpenSSL &#xBA54;&#xBAA8;&#xB9AC; &#xCE90;&#xC2DC;&#xC640; &#xB3D9;&#xAE30;&#xD654; &#xD55C;&#xB2E4;.</li>
+<li>&#xC11C;&#xBC84;&#xC758; &#xC785;&#xCD9C;&#xB825; &#xC18D;&#xB3C4;&#xAC00; &#xC57D;&#xAC04; &#xC99D;&#xAC00;&#xD558;&#xACE0;, &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC758; &#xC694;&#xCCAD; &#xC18D;&#xB3C4;&#xAC00; &#xB208;&#xC5D0; &#xB744;&#xAC8C; &#xBE68;&#xB77C;&#xC9C4;&#xB2E4;.</li>
+<li>&#xAC00;&#xC7A5; &#xAD8C;&#xC7A5;&#xD558;&#xB294; &#xC635;&#xC158;</li>
+</ol>
+</li>
+<li>shm:/path/to/datafile(size)<ol>
+<li>RAM&#xC758; &#xACF5;&#xC720; &#xBA54;&#xBAA8;&#xB9AC; &#xC138;&#xADF8;&#xBA3C;&#xD2B8;&#xC758; &#xB0B4;&#xBD80; &#xACE0;&#xC131;&#xB2A5; &#xD574;&#xC2DC; &#xD14C;&#xC774;&#xBE14;&#xC744; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</li>
+<li>&#xBAA8;&#xB4E0; &#xD50C;&#xB7AB;&#xD3FC;&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC5C6;&#xB2E4;.</li>
+</ol>
+</li>
+</ol>
+<p>SSLSessionCacheTimeout&#xC740; &#xCE90;&#xC2DC;&#xC758; &#xD0C0;&#xC784; &#xC544;&#xC6C3; &#xC2DC;&#xAC04;&#xC744; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</p>
+<pre><code class="lang-bash">SSLRandomSeed startup file:/dev/urandom  256
+SSLRandomSeed connect <span class="hljs-built_in">builtin</span>
+</code></pre>
+<p>&#xC11C;&#xBC84;&#xAC00; &#xC2DC;&#xB3D9;&#xD560; &#xB54C; &#xD639;&#xC740; &#xC0C8;&#xB85C;&#xC6B4; SSL &#xC5F0;&#xACB0;&#xC774; &#xC774;&#xB8E8;&#xC5B4;&#xC9C8; &#xB54C; Pseudo Random Number Generator(PRNG)&#xC758; seeding&#xC744; &#xC704;&#xD55C; &#xD558;&#xB098; &#xD639;&#xC740; &#xC5EC;&#xB7EC;&#xAC1C;&#xC758; seed source&#xB97C; &#xC124;&#xC815;&#xD55C;&#xB2E4;</p>
+<p>startup file:/path/to/source</p>
+<p>PRNG&#xC758; seeding&#xC744; &#xC704;&#xD574; &#xC9C0;&#xC815;&#xD55C; &#xACBD;&#xB85C;&#xC758; &#xC678;&#xBD80; &#xD30C;&#xC77C;&#xC744; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</p>
+<p>&#xC9C0;&#xC815;&#xD55C; &#xBC14;&#xC774;&#xD2B8;&#xC5D0; &#xB530;&#xB77C; entropy&#xB97C; &#xC0DD;&#xC131;&#xD55C;&#xB2E4;.</p>
+<p>connect builtin</p>
+<p>&#xC2E4;&#xD589; &#xC2DC; &#xCD5C;&#xC18C;&#xD55C;&#xC758; CPU cycle&#xC744; &#xC18C;&#xBE44;&#xD558;&#xBA70;, &#xACB0;&#xC810;&#xC5C6;&#xC774; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
+<p>&#xADF8;&#xB2E4;&#xC9C0; &#xD6A8;&#xACFC;&#xC801;&#xC778; &#xC18C;&#xC2A4;&#xB294; &#xC544;&#xB2C8;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;, &#xCD94;&#xAC00;&#xC801;&#xC778; seeding source&#xB97C; &#xC9C0;&#xC815;&#xD558;&#xB294;&#xAC8C; &#xC88B;&#xB2E4;.</p>
+<pre><code class="lang-bash">SSLCryptoDevice <span class="hljs-built_in">builtin</span>
+</code></pre>
+<p>SSL &#xD234;&#xD0B7;&#xC774; engine&#xC744; &#xC9C0;&#xC6D0;&#xD558;&#xB294; &#xACBD;&#xC6B0;&#xC5D0; &#xC0AC;&#xC6A9; &#xAC00;&#xB2A5;&#xD558;&#xACE0; &#xD558;&#xB4DC;&#xC6E8;&#xC5B4; &#xAC00;&#xC18D;&#xBCF4;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB294; &#xC124;&#xC815;</p>
+<pre><code class="lang-bash">DocumentRoot <span class="hljs-string">&quot;/var/www/html/goodluckmin.ze.to&quot;</span>
+ServerName www.goodluckmin.ze.to:443
+</code></pre>
+<p>https&#xB85C; &#xB4E4;&#xC5B4;&#xC624;&#xB294; &#xC694;&#xCCAD;&#xC758; &#xB8E8;&#xD2B8; &#xB514;&#xB809;&#xD130;&#xB9AC; &#xACBD;&#xB85C;&#xC640; &#xC11C;&#xBC84;&#xC774;&#xB984;&#xC744; &#xC124;&#xC815;</p>
+<pre><code class="lang-bash">ErrorLog logs/ssl_error_<span class="hljs-built_in">log</span>
+TransferLog logs/ssl_access_<span class="hljs-built_in">log</span>
+LogLevel warn
+</code></pre>
+<p>SSL &#xAC00;&#xC0C1; &#xD638;&#xC2A4;&#xD2B8;&#xC758; &#xB85C;&#xADF8; &#xACBD;&#xB85C;&#xB97C; &#xC124;&#xC815;</p>
+<p>httpd.conf&#xC758; &#xB85C;&#xADF8; &#xACBD;&#xB85C;&#xB97C; &#xC0C1;&#xC18D; &#xBC1B;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;.</p>
+<pre><code class="lang-bash">SSLEngine on
+</code></pre>
+<p>SSL &#xAC00;&#xC0C1; &#xD638;&#xC2A4;&#xD2B8; &#xD65C;&#xC131;&#xD654;/&#xBE44;&#xD654;&#xC124;&#xD654; &#xC5EC;&#xBD80; &#xC124;&#xC815;</p>
+<pre><code class="lang-bash">SSLProtocol all -SSLv3
+</code></pre>
+<p>&#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xAC00; &#xC811;&#xC18D;&#xC774; &#xAC00;&#xB2A5;&#xD55C; &#xD504;&#xB85C;&#xD1A0;&#xCF5C;&#xC744; &#xC124;&#xC815;&#xD55C;&#xB2E4; </p>
+<p>SSLv2&#xC740; &#xBE44;&#xD65C;&#xC131;&#xD654;&#xAC00; &#xAE30;&#xBCF8;&#xAC12;&#xC774;&#xB2E4;.</p>
+<pre><code class="lang-bash">SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5:!SEED:!IDEA
+</code></pre>
+<p>&#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xAC00; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB294; ciphers&#xB4E4;&#xC744; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</p>
+<p>&#xC774;&#xB97C; &#xC704;&#xD574; &#xCF5C;&#xB860;&#xC774;&#xB098; &#xCF64;&#xB9C8;(,)&#xB85C; &#xAD6C;&#xBD84;&#xB418;&#xB294; SSLeay cipher specification&#xB4E4;&#xB85C; &#xC774;&#xB8E8;&#xC5B4;&#xC9C4; &#xC2A4;&#xD2B8;&#xB9C1;&#xC744; &#xAC12;&#xC73C;&#xB85C; &#xC9C0;&#xC815;&#xD55C;&#xB2E4;.</p>
+<p>! : &#xB9AC;&#xC2A4;&#xD2B8;&#xB85C;&#xBD80;&#xD130; cipher&#xB97C; &#xC644;&#xC804;&#xD788; &#xC81C;&#xAC70;&#xD55C;&#xB2E4;</p>
+<p>none : &#xB9AC;&#xC2A4;&#xD2B8;&#xC5D0; cipher&#xB97C; &#xD3EC;&#xD568;&#xC2DC;&#xD0A8;&#xB2E4;</p>
+<p>+: cipher&#xB97C; &#xB9AC;&#xC2A4;&#xD2B8;&#xC5D0; &#xD3EC;&#xD568;&#xC2DC;&#xD0A4;&#xBA70; &#xB610;&#xD55C; &#xB9AC;&#xC2A4;&#xD2B8;&#xC774; &#xD604;&#xC7AC; &#xC704;&#xCE58;&#xB85C; &#xAC00;&#xC838;&#xC628;&#xB2E4;.</p>
+<p>-: &#xB9AC;&#xC2A4;&#xD2B8;&#xB85C;&#xBD80;&#xD130; cipher&#xB97C; &#xC81C;&#xAC70;&#xD55C;&#xB2E4;(&#xC774;&#xD6C4;&#xC5D0; &#xB2E4;&#xC2DC; &#xD3EC;&#xD568;&#xC2DC;&#xD0AC;&#xC218; &#xC788;&#xB2E4;.)</p>
+<pre><code>SSLCertificateFile /etc/letsencrypt/live/goodluckmin.ze.to/cert.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/goodluckmin.ze.to/privkey.pem
+SSLCertificateChainFile /etc/letsencrypt/live/goodluckmin.ze.to/chain.pem
+SSLCACertificateFile /etc/letsencrypt/live/goodluckmin.ze.to/fullchain.pem
+</code></pre><p>&#xC778;&#xC99D;&#xC11C; &#xAD00;&#xB828; &#xD30C;&#xC77C;&#xB4E4;&#xC758; &#xACBD;&#xB85C;&#xB97C; &#xC9C0;&#xC815;&#xD55C;&#xB2E4;.</p>
+<pre><code class="lang-bash">SSLVerifyDepth  10
+</code></pre>
+<p>&#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; &#xC778;&#xC99D;&#xC5D0; &#xB300;&#xD55C; &#xC778;&#xC99D;&#xC11C; &#xD655;&#xC778; &#xC218;&#xC900;&#xC744; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</p>
+<p>4&#xAC00;&#xC9C0; &#xC635;&#xC158;</p>
+<ol>
+<li>none : &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; &#xC778;&#xC99D;&#xC11C;&#xB97C; &#xD544;&#xC694;&#xB85C; &#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;.</li>
+<li>optional : &#xC720;&#xD6A8;&#xD55C; &#xC778;&#xC99D;&#xC11C;&#xB294; &#xC120;&#xD0DD; &#xC0AC;&#xD56D;&#xC774;&#xB2E4;.</li>
+<li>require : &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xC720;&#xD6A8;&#xD55C; &#xC778;&#xC99D;&#xC11C;&#xB97C; &#xC81C;&#xC2DC;&#xD574;&#xC57C; &#xD55C;&#xB2E4;.</li>
+<li>optional_no_ca : &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xC720;&#xD6A8;&#xD55C; &#xC778;&#xC99D;&#xC11C;&#xB97C; &#xC81C;&#xC2DC;&#xD574;&#xC57C; &#xD55C;&#xB2E4;. &#xADF8;&#xB7EC;&#xB098; &#xAC80;&#xC99D;&#xD560; &#xD544;&#xC694;&#xB294; &#xC5C6;&#xB2E4;.</li>
+</ol>
+<p>SSLVerifyDepth&#xB294; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xAC00; &#xC720;&#xD6A8;&#xD55C; &#xC778;&#xC99D;&#xC11C;&#xB97C; &#xD310;&#xB2E8;&#xD558;&#xAE30; &#xAE4C;&#xC9C0;&#xC758; mod_ssl&#xC774; &#xAC80;&#xC99D;&#xD558;&#xB294; &#xAE4A;&#xC774;&#xB97C; &#xC124;&#xC815;&#xD55C;&#xB2E4;.</p>
+<pre><code class="lang-bash">&lt;Location /&gt;
+SSLRequire (    %{SSL_CIPHER} !~ m/^(EXP|NULL)/ \
+            and %{SSL_CLIENT_S_DN_O} eq <span class="hljs-string">&quot;Snake Oil, Ltd.&quot;</span> \
+            and %{SSL_CLIENT_S_DN_OU} <span class="hljs-keyword">in</span> {<span class="hljs-string">&quot;Staff&quot;</span>, <span class="hljs-string">&quot;CA&quot;</span>, <span class="hljs-string">&quot;Dev&quot;</span>} \
+            and %{TIME_WDAY} &gt;= 1 and %{TIME_WDAY} &lt;= 5 \
+            and %{TIME_HOUR} &gt;= 8 and %{TIME_HOUR} &lt;= 20       ) \
+           or %{REMOTE_ADDR} =~ m/^192\.76\.162\.[0-9]+$/
+&lt;/Location&gt;
+</code></pre>
+<p>SSLRequire&#xB97C; &#xD1B5;&#xD574;&#xC11C; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xBCC4; &#xC811;&#xADFC; &#xAD8C;&#xD55C;&#xC744; &#xC124;&#xC815;&#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
+<p>boolean &#xD45C;&#xD604;&#xC2DD;&#xC73C;&#xB85C; &#xC774; &#xC811;&#xADFC; &#xAD8C;&#xD55C;&#xC744; &#xC124;&#xC815;&#xD55C;&#xB2E4;. &#xBB38;&#xBC95;&#xC740; C&#xC5B8;&#xC5B4;&#xC640; Perl&#xB97C; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</p>
+<pre><code class="lang-bash">&lt;Files ~ <span class="hljs-string">&quot;\.(cgi|shtml|phtml|php3?)$&quot;</span>&gt;
+    SSLOptions +StdEnvVars
+&lt;/Files&gt;
+&lt;Directory <span class="hljs-string">&quot;/var/www/cgi-bin&quot;</span>&gt;
+    SSLOptions +StdEnvVars
+&lt;/Directory&gt;
+</code></pre>
+<p>SSL Engine&#xC5D0; &#xC635;&#xC158;&#xC744; &#xC124;&#xC815;</p>
+<ol>
+<li>StdEnvVars <ol>
+<li>&#xAE30;&#xBCF8; SSL/TLS&#xACFC; &#xAD00;&#xB828;&#xB41C; &#xD658;&#xACBD; &#xBCC0;&#xC218;&#xB4E4;&#xC744; &#xB0B4;&#xBCF4;&#xB0B8;&#xB2E4;.</li>
+</ol>
+</li>
+<li>FakeBasicAuth<ol>
+<li>&#xC811;&#xADFC; &#xAD00;&#xB9AC;&#xC5D0; &#xAE30;&#xBCF8; Auth/DBMAuth &#xBC29;&#xC2DD;&#xC744; &#xC0AC;&#xC6A9;&#xD55C;&#xB2E4;.</li>
+</ol>
+</li>
+<li>ExportCertData<ol>
+<li>2&#xAC00;&#xC9C0; &#xCD94;&#xAC00;&#xC801;&#xC778; &#xD658;&#xACBD; &#xBCC0;&#xC218;(SSL_CLIENT_CERT&#xC640; SSL_SERVER_CERT)&#xB97C; &#xB0B4;&#xBCF4;&#xB0B8;&#xB2E4;. </li>
+<li>2&#xAC00;&#xC9C0; &#xD658;&#xACBD; &#xBCC0;&#xC218;&#xC5D0;&#xB294; &#xC11C;&#xBC84;&#xC640; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC758; PEM &#xCC98;&#xB9AC; &#xB41C; &#xC778;&#xC99D;&#xC11C;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xB2E4;.</li>
+<li>&#xC778;&#xC99D;&#xC11C;&#xB4E4;&#xC744; CGI &#xC2A4;&#xD06C;&#xB9BD;&#xD2B8;&#xB85C; &#xAC00;&#xC838;&#xC62C; &#xC218; &#xC788;&#xAC8C; &#xD574;&#xC900;&#xB2E4;.</li>
+</ol>
+</li>
+<li>StrictRequire<ol>
+<li>SSLRequireSSL&#xC774;&#xB098; SSLRequire &#xC811;&#xADFC;&#xC744; &#xBAA8;&#xB450; &#xCC28;&#xB2E8;&#xD55C;&#xB2E4;.</li>
+</ol>
+</li>
+<li>OptRenegotiate<ol>
+<li>SSL &#xC9C0;&#xC2DC;&#xBB38;&#xC774; &#xB514;&#xB809;&#xD130;&#xB9AC;&#xBCC4;&#xB85C; &#xC9C0;&#xC815;&#xB418;&#xC5B4; &#xC788;&#xC73C;&#xBA74; SSL &#xC5F0;&#xACB0; &#xC7AC;&#xD611;&#xC0C1; &#xD578;&#xB4E4;&#xB9C1;&#xC744; &#xCD5C;&#xC801;&#xD654;&#xC2DC;&#xCF1C;&#xC900;&#xB2E4;.</li>
+</ol>
+</li>
+</ol>
+<pre><code class="lang-bash">BrowserMatch <span class="hljs-string">&quot;MSIE [2-5]&quot;</span> \
+         nokeepalive ssl-unclean-shutdown \
+         downgrade-1.0 force-response-1.0
+</code></pre>
+<p>&#xCCAB; &#xBC88;&#xC9F8; &#xB9E4;&#xAC1C;&#xBCC0;&#xC218;&#xC640; &#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xAC00; &#xBCF4;&#xB0B8; User-Agent &#xD5E4;&#xB354;&#xAC00; &#xC77C;&#xCE58;&#xD560; &#xACBD;&#xC6B0; &#xD658;&#xACBD; &#xBCC0;&#xC218;&#xB97C; &#xC124;&#xC815;&#xD558;&#xAC70;&#xB098; &#xD574;&#xC81C;&#xD560; &#xC218; &#xC788;&#xB2E4;.</p>
+<p>&#xAE30;&#xBCF8; &#xC544;&#xD30C;&#xCE58; SSL &#xC124;&#xC815;&#xC740; IE&#xC5D0; &#xBCF4;&#xC218;&#xC801;&#xC774;&#xB2E4;. &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; IE&#xC640; https&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xB54C;&#xB294; &#xBAA8;&#xB4E0; &#xC5F0;&#xACB0; &#xC720;&#xC9C0;&#xB97C; &#xBE44;&#xD65C;&#xC131;&#xD654; &#xC2DC;&#xD0A8;&#xB2E4;.</p>
+<p>downgrade-1.0 force-response-1.0 &#x2192; &#xC790;&#xBC14; VM&#xC774; &#xC694;&#xCCAD;&#xC744; HTTP/1.1 &#xD3EC;&#xB9F7;&#xC73C;&#xB85C; &#xB9CC;&#xB4E0;&#xB2E4; &#xD558;&#xC9C0;&#xB9CC; &#xC751;&#xB2F5;&#xC740; &#xBC18;&#xB4DC;&#xC2DC; HTTP/1.0 &#xD3EC;&#xB9F7;&#xC73C;&#xB85C; &#xB098;&#xAC00;&#xC57C;&#xD55C;&#xB2E4;.</p>
+<p>&#xC774;&#xB807;&#xAC8C; &#xD558;&#xB294; &#xC774;&#xC720;&#xB294; &#xC544;&#xD30C;&#xCE58;&#xB97C; &#xC694;&#xCCAD;&#xC774; HTTP/1.0&#xC73C;&#xB85C; &#xB4E4;&#xC5B4;&#xC654;&#xB2E4;&#xB77C;&#xACE0; &#xC18D;&#xC774;&#xAE30; &#xC704;&#xD574;&#xC11C;&#xC774;&#xB2E4;.</p>
+<pre><code class="lang-bash">CustomLog logs/ssl_request_<span class="hljs-built_in">log</span> \
+          <span class="hljs-string">&quot;%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \&quot;%r\&quot; %b&quot;</span>
+</code></pre>
+<p>&#xC11C;&#xBC84;&#xBCC4; &#xB85C;&#xADF8; &#xCEE4;&#xC2A4;&#xD140; &#xB85C;&#xADF8; &#xD30C;&#xC77C;&#xC758; &#xB8E8;&#xD2B8; &#xACBD;&#xB85C; &#xC124;&#xC815;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Apache_SSL.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Apache에 SSL인증서 설치하기">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ssl.conf 알아보기","level":"3.8","depth":1,"previous":{"title":"Apache에 SSL인증서 설치하기","level":"3.7","depth":1,"path":"Apache_SSL.md","ref":"Apache_SSL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Apache_ssl_conf.md","mtime":"2022-08-28T19:09:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-29T04:11:07.293Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
